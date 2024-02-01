@@ -1,4 +1,50 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://axiomat.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'AXIOMAT.IO'
 theme = "axiom"
+
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Services'
+pageRef = '/services'
+weight = 20
+
+[[menus.main]]
+name = 'Blog'
+pageRef = '/blog'
+weight = 30
+
+[[menus.main]]
+name = 'Events'
+pageRef = '/events'
+weight = 40
+
+[[menus.footer]]
+name = 'Axiomat Labs'
+pageRef = '/labs'
+weight = 10
+
+[[menus.footer]]
+name = 'Axiomat Ventures'
+pageRef = '/ventures'
+weight = 20
+
+[[menus.footer]]
+name = 'Axiomat Foundation'
+pageRef = '/foundation'
+weight = 30
+
+[[menus.footer]]
+name = 'About'
+pageRef = '/about'
+weight = 40
+
+[[menus.footer]]
+name = 'Careers'
+pageRef = '/careers'
+weight = 50

@@ -1,3 +1,8 @@
+/* Theme Name: Axiom */
+/* Theme URI: github.com/axiomat-io/axiom-theme */
+/* Author: andrew@axiomat.io */
+
+/* AX-000: Hugo Default styles */
 body {
   color: #222;
   font-family: sans-serif;
@@ -19,4 +24,34 @@ footer {
 a {
   color: #00e;
   text-decoration: none;
+}
+
+/* AX-001: Base styles */
+
+/* AX-002: Navigation */
+.ax-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ax-header nav ul li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.ax-footer nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ax-footer nav ul li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.ax-main img {
+  max-width: 50%;
+  border-radius: 50%;
 }

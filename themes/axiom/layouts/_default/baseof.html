@@ -4,13 +4,13 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <header>
+  <header class="ax-header">
     {{ partial "header.html" . }}
   </header>
-  <main>
+  <main class="ax-main">
     {{ block "main" . }}{{ end }}
   </main>
-  <footer>
+  <footer class="ax-footer">
     {{ partial "footer.html" . }}
   </footer>
 </body>

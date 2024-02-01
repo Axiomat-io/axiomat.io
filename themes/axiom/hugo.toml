@@ -7,26 +7,6 @@ name = 'Home'
 pageRef = '/'
 weight = 10
 
-[[menus.main]]
-name = 'Services'
-pageRef = '/services'
-weight = 20
-
-[[menus.main]]
-name = 'Blog'
-pageRef = '/blog'
-weight = 30
-
-[[menus.main]]
-name = 'Contact'
-pageRef = '/contact'
-weight = 40
-
-[[menus.main]]
-name = 'Events'
-pageRef = '/events'
-weight = 50
-
 [module]
   [module.hugoVersion]
     extended = false
