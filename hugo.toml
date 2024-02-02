@@ -3,6 +3,9 @@ languageCode = 'en-us'
 title = 'AXIOMAT.IO'
 theme = "axiom"
 
+[params.meta]
+favicon = true
+
 
 [[menus.main]]
 name = 'Home'

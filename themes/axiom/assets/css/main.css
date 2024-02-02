@@ -25,7 +25,9 @@ a {
   color: #00e;
   text-decoration: none;
 }
-
+nav ul li a {
+  color: #088E9F;
+}
 /* AX-001: Base styles */
 
 /* AX-002: Navigation */
@@ -38,6 +40,14 @@ a {
 .ax-header nav ul li {
   display: inline;
   margin-right: 1rem;
+  font-size: x-large;
+}
+
+.ax-header nav ul li a {
+  padding: 0.34rem;
+}
+.ax-header nav ul li a.active {
+  background-color: #e1e1e1;
 }
 
 .ax-footer nav ul {
@@ -49,6 +59,7 @@ a {
 .ax-footer nav ul li {
   display: inline;
   margin-right: 1rem;
+  font-size: smaller;
 }
 
 .ax-main img {
