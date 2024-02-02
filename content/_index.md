@@ -1,5 +1,5 @@
 +++
-title = 'Axiom@Home'
+title = 'Home'
 date = 2024-01-31T16:29:00-06:00
 +++
 # I.T. MADE EASY

@@ -1,7 +1,7 @@
 +++
 title = 'About'
 date = 2024-01-31T16:33:22-06:00
-draft = true
+draft = false
 +++
 ***Axiomat Computer Company*** was founded in 2019 to provide IT and Security products and expertise to clients in the Twin Cities, Minnesota area. Since then, our team has grown and we have partnered with IT and Security teams at some of the biggest companies in the country. With over 20 years of experience in the tech industry, we have the knowledge and expertise to help you succeed. Our team is dedicated to providing the best possible service to our clients, and we are committed to helping you achieve your goals.
 
