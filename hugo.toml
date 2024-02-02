@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = 'axiomat.io'
 theme = "axiom"
 enableRobotsTXT = true
+description = "The online home for Axiomat Computer Company, a global technology services firm with more than twenty years of experience turning technology and process into the competetive edge your business needs to thrive."
 
 [params.meta]
 favicon = true

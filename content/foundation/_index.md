@@ -2,6 +2,7 @@
 title = 'Axiomat Foundation'
 date = 2024-02-01T13:18:51-06:00
 draft = false
+description = "Axiomat Computer Company's chartiable foundation"
 +++
 The Axiomat Foundation is the philanthropic arm of Axiomat Computer Company. Here the focus is on giving back to the community and helping those in need. The foundation's efforts are focused into three main areas: Education, Health, and Environment. The foundation is located in the heart of St Petersburg, Florida.
 

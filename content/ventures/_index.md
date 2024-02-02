@@ -2,6 +2,7 @@
 title = 'Axiomat Ventures'
 date = 2024-02-01T13:17:44-06:00
 draft = false
+description = "The Investment and Partnership division of Axiomat Computer Company"
 +++
 The Investment and Partnership division of Axiomat Computer Company. Here the focus is on investing in or partnering with other companies to help them grow and succeed, enriching the market and the world with new and innovative products and services. Our investments and partnership align with the needs of our clients, and the social and environmental needs of the world.
 
