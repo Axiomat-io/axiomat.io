@@ -1,4 +1,4 @@
-baseURL = 'https://axiomat.io/'
+baseURL = 'https://preview.axiomat.io/'
 languageCode = 'en-us'
 title = 'axiomat.io'
 theme = "axiom"
