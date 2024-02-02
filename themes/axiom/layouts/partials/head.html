@@ -2,5 +2,20 @@
 <meta name="viewport" content="width=device-width">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+{{ $paginator := .Paginate (where .Site.RegularPages ".Params.post" "!=" false) }}
+
+{{ if .IsHome }}
+		<meta name="description" content="{{ .Description }}" />
+{{ else }}
+	{{ if .Params.seoTitle }}
+		<title>{{ .Params.seoTitle }}</title>
+	{{ else }}
+		<title>{{ .Title }}</title>
+	{{ end }}
+	<meta name="description" content="{{ .Description }}" />
+{{ end}}
+
+
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
