@@ -3,7 +3,7 @@ title = 'Axiomat Foundation'
 date = 2024-02-01T13:18:51-06:00
 draft = true
 +++
-The Axiomat Foundation is the philanthropic division of Axiomat Computer Company. Here the focus is on giving back to the community and helping those in need. The foundation is divided into three main areas: Education, Health, and Environment. Each area has its own team of volunteers and coordinators. The foundation is located in the heart of St Petersburg, Florida.
+The Axiomat Foundation is the philanthropic arm of Axiomat Computer Company. Here the focus is on giving back to the community and helping those in need. The foundation's efforts are focused into three main areas: Education, Health, and Environment. The foundation is located in the heart of St Petersburg, Florida.
 
 ## Our Initiatives
 ### Cybersecurity Education Program
@@ -26,3 +26,6 @@ In collaboration with local communities, we organize Community Cyber Defense Wor
 
 We believe in bridging the digital divide and ensuring equal access to technology. Through our Technology Donations program, we donate refurbished computers, laptops, and other IT equipment to schools, non-profit organizations, and underprivileged communities. By providing access to technology, we empower individuals and organizations to thrive in the digital age.
 
+## Working with Us
+
+We are always looking for passionate individuals and organizations to join us in our mission. Whether you are an educator, a student, a developer, or a community leader, there are many ways to get involved. You can volunteer your time, contribute your expertise, or support our initiatives through donations and sponsorships. Together, we can make a positive impact and create a safer, more inclusive digital world.

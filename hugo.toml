@@ -1,6 +1,6 @@
 baseURL = 'https://axiomat.io/'
 languageCode = 'en-us'
-title = 'AXIOMAT.IO'
+title = 'axiomat.io'
 theme = "axiom"
 
 [params.meta]
