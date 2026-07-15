@@ -1,3 +1,338 @@
 {{ define "main" }}
-  {{ .Content }}
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill mono"><span class="dot">●</span> Now in early access</span>
+    <h1>Little AI assistants that <span class="grad">actually get things done</span>.</h1>
+    <p class="sub">
+      Tell Ward what you'd like handled — track a deadline, keep an eye on news you care about,
+      tidy up your inbox — and it builds an assistant that does it, on its own, on a schedule.
+      No apps to wire together. No prompts to babysit. Describe it once; it just keeps going.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#cta">Get early access</a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+
+    <div class="workforce-strip">
+      <div class="worker-chip"><span class="dot"></span> Market &amp; watchlist tracker</div>
+      <div class="worker-chip"><span class="dot"></span> Deadline &amp; renewal tracker</div>
+      <div class="worker-chip"><span class="dot"></span> Inbox helper</div>
+      <div class="worker-chip"><span class="dot"></span> News watcher</div>
+      <div class="worker-chip"><span class="dot"></span> Calendar assistant</div>
+      <div class="worker-chip muted" style="border-style:dashed">+ your idea here</div>
+    </div>
+  </div>
+</header>
+
+<!-- APP SCREENSHOT -->
+<div class="shot-band">
+  <div class="app-frame">
+    <div class="app-window">
+      <div class="app-chrome">
+        <span class="chrome-dot" style="background:#ef6464"></span>
+        <span class="chrome-dot" style="background:#f4bf4f"></span>
+        <span class="chrome-dot" style="background:#34d399"></span>
+      </div>
+      <img src="/images/app-screenshot.png" alt="Ward showing a personal assistant's live daily brief with its own dashboard, and a note that repeat items were skipped" />
+    </div>
+    <div class="shot-callouts">
+      <div class="shot-callout"><span class="num">1</span>Assistants for whatever you care about — each one you created just by chatting, no code.</div>
+      <div class="shot-callout"><span class="num">2</span>"4 items skipped as already seen" — it remembers what it's told you, so you never get the same thing twice.</div>
+      <div class="shot-callout"><span class="num">3</span>Every assistant gets its own tidy page you can check any time — it builds that for you too.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IT DOES -->
+<section id="uses">
+  <div class="wrap">
+    <div class="eyebrow">What it does</div>
+    <h2>Hand off the little things you keep meaning to keep an eye on.</h2>
+    <p class="lede">
+      There's a whole pile of stuff you'd love to stay on top of but never quite do. Describe
+      any of it to Ward and it builds an assistant that handles it for you — quietly, on a
+      schedule, and only bugging you when it matters. A few of the things people set up:
+    </p>
+    <div class="grid grid-2" style="margin-top:28px">
+      <div class="card"><h3>⏰ Never miss a deadline</h3><p>Renewals, subscriptions, warranties, the passport that expires next spring. It watches the dates and nudges you in time — not the day after.</p></div>
+      <div class="card"><h3>📈 A market watch you don't babysit</h3><p>Tell it the stocks or themes you follow. Each morning you get a plain-English read on what moved and why — and it can keep a running scorecard of its own calls. Paper only; it never touches your money.</p></div>
+      <div class="card"><h3>📰 The news you care about, once a day</h3><p>Your topics, one tidy digest — no doomscrolling, and it never shows you the same story twice.</p></div>
+      <div class="card"><h3>✉️ Tame your inbox</h3><p>Connect Gmail and it sorts the noise, summarizes the threads that matter, and drafts replies for you to approve before anything sends.</p></div>
+      <div class="card"><h3>📅 Keep your calendar sane</h3><p>Connect Google Calendar and it reminds you, preps you for what's next, and helps you get things on the books.</p></div>
+      <div class="card"><h3>📓 A living digest, kept current</h3><p>A research log, a trip plan, a reading list, a weekly wrap-up — kept up to date for you, and saved to Notion if that's where you live.</p></div>
+    </div>
+    <div class="callout">
+      <p>It's like having a few tireless little assistants who each handle one thing — and never forget, never nag, and never need managing.</p>
+      <div class="attr">— and you built every one of them just by asking</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>You have a conversation. It does the rest.</h2>
+    <p class="lede">
+      No setup screens, no rules to configure, no code. You chat with Ward like you'd text a
+      capable friend — and it turns what you said into an assistant that quietly gets it done.
+    </p>
+
+    <div class="demo-steps">
+
+      <div class="demo-step">
+        <div class="step-label">
+          <div class="step-num">Step 1</div>
+          <div class="step-title">Just say what you want</div>
+        </div>
+        <div class="step-body">
+          <div class="req-list">
+            <div class="req"><span class="from">You</span><span class="msg">Keep an eye on my stock watchlist and give me a short read each morning on what moved and why.</span></div>
+            <div class="req"><span class="from">You</span><span class="msg">Remind me before any of my subscriptions renew, and before my passport expires.</span></div>
+            <div class="req"><span class="from">You</span><span class="msg">Every evening, sum up the important emails from my inbox and draft replies I can approve.</span></div>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin-top:16px">Plain English. Ward figures out what it needs and builds the assistant for you.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="step-label">
+          <div class="step-num">Step 2</div>
+          <div class="step-title">It runs on its own</div>
+        </div>
+        <div class="step-body">
+          <div class="worker-list">
+            <div class="worker-row"><span class="dot"></span> <span>Works on a schedule</span><span class="job">— every morning, every hour, or when something happens. You don't have to be around.</span></div>
+            <div class="worker-row"><span class="dot"></span> <span>Remembers as it goes</span><span class="job">— it knows what it already told you, so you never get the same thing twice.</span></div>
+            <div class="worker-row"><span class="dot"></span> <span>Gets sharper over time</span><span class="job">— when an assistant needs something new to do its job better, Ward gives it that — you don't lift a finger.</span></div>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin-top:16px">Set it up once. It just keeps going — quietly, in the background.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="step-label">
+          <div class="step-num">Step 3</div>
+          <div class="step-title">You stay in control</div>
+        </div>
+        <div class="step-body">
+          <div class="bucket-list">
+            <div class="bucket">
+              <div class="bucket-head"><span>📋</span> See everything, any time</div>
+              <div class="bucket-item"><span class="arrow">→</span> Each assistant gets its own simple page — the latest results, at a glance, whenever you want.</div>
+              <div class="bucket-item"><span class="arrow">→</span> You can always see exactly what it looked at and what it did.</div>
+            </div>
+            <div class="bucket">
+              <div class="bucket-head"><span>✅</span> Nothing happens behind your back</div>
+              <div class="bucket-item"><span class="arrow">→</span> Anything that sends, posts, or changes something waits for your OK first.</div>
+              <div class="bucket-item"><span class="arrow">→</span> Or keep an assistant "look, don't touch" — it can read and report, but never act.</div>
+            </div>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin-top:16px">Helpful and hands-off, but never out of your hands.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="wrap">
+    <div class="eyebrow">Connect your apps</div>
+    <h2>It works with the apps you already live in.</h2>
+    <p class="lede">
+      Connect an account once from Settings, and your assistants can actually get things done
+      in it — read what's there, keep it tidy, and (with your OK) make changes. Nothing to
+      install.
+    </p>
+    <div class="trust">
+      <div class="card"><h3>📅 Google Calendar</h3><p>See what's coming, get reminded, and put things on the calendar without opening it.</p></div>
+      <div class="card"><h3>✉️ Gmail</h3><p>Sort the inbox, pull out what matters, and draft replies — sent only when you approve.</p></div>
+      <div class="card"><h3>🗂️ Google Drive</h3><p>Find files, pull the details out of them, and save new ones where they belong.</p></div>
+      <div class="card"><h3>📓 Notion</h3><p>Keep a page or database up to date — a digest, a tracker, a log — right where you already work.</p></div>
+      <div class="card"><h3>🔗 …and a growing list</h3><p>New connections are added regularly. Need something specific? Tell Ward — it'll ask for it.</p></div>
+      <div class="card"><h3>🙌 You choose what it can touch</h3><p>Grant read-only, or require your approval for anything that changes something. Your call, per assistant.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WARD -->
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow">Why Ward</div>
+    <h2>Everything else still leaves the work to you.</h2>
+    <p class="lede">
+      There's no shortage of AI. What's rare is something that just handles things in the
+      background, gets more useful the longer you have it, and never turns into one more thing
+      to manage.
+    </p>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-vs-label">vs. a chatbot</div>
+        <div class="why-them">Answers when you ask. Silent otherwise.</div>
+        <div class="why-divider">↓</div>
+        <div class="why-ward-row">Works in the background and shows up with the answer.</div>
+        <p class="why-body">ChatGPT and the like are great — but you have to remember to ask, every time. A Ward assistant just does its thing on its own and leaves the result waiting for you. No prompt, no open laptop.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-vs-label">vs. reminder &amp; automation apps</div>
+        <div class="why-them">Do exactly what you set up. Forever. No more, no less.</div>
+        <div class="why-divider">↓</div>
+        <div class="why-ward-row">Understands what you meant, and gets better at it.</div>
+        <p class="why-body">Reminder apps and tools like IFTTT or Zapier follow the rule you built — and break the moment reality doesn't match it. A Ward assistant works from what you actually want, adapts as things change, and quietly picks up new abilities over time.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-vs-label">vs. a drawer full of apps</div>
+        <div class="why-them">A different app for every little thing — each with its own login and learning curve.</div>
+        <div class="why-divider">↓</div>
+        <div class="why-ward-row">One place, plain English, for all of it.</div>
+        <p class="why-body">Instead of ten single-purpose apps you have to check, it's one spot where you describe what you want and it's handled. Every assistant lives together, and they can all draw on the same connections you've set up.</p>
+      </div>
+
+    </div>
+
+    <div class="why-truth">
+      <p>The longer you use it, the more it just handles for you — and anything one assistant learns to do, the others can do too. It quietly compounds, without ever asking you to manage it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h2>Start free. Pay as you grow.</h2>
+    <p class="lede">
+      Every plan has the same features. You pick a plan for one reason: how much you want
+      handled each day. It's a daily budget of assistant runs that all your assistants share —
+      add more assistants and they split the same budget. Chatting with Ward is always free.
+    </p>
+
+    <div class="pricing">
+      <div class="tier">
+        <div class="tier-name">Free</div>
+        <div class="tier-price">$0</div>
+        <div class="tier-note">To get started</div>
+        <ul>
+          <li>~3 assistant runs a day</li>
+          <li>As many assistants as you like</li>
+          <li>Every feature included</li>
+        </ul>
+        <a class="btn btn-ghost tier-cta" href="#cta">Start free</a>
+      </div>
+
+      <div class="tier tier-featured">
+        <div class="tier-flag">Most popular</div>
+        <div class="tier-name">Pro</div>
+        <div class="tier-price">$29<span>/mo</span></div>
+        <div class="tier-note">When you need more</div>
+        <ul>
+          <li>~30 assistant runs a day</li>
+          <li>As many assistants as you like</li>
+          <li>Every feature included</li>
+        </ul>
+        <a class="btn btn-primary tier-cta" href="#cta">Get Pro</a>
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">Team</div>
+        <div class="tier-price">$99<span>/mo</span></div>
+        <div class="tier-note">For power users &amp; small teams</div>
+        <ul>
+          <li>~150 assistant runs a day</li>
+          <li>Room for a lot going at once</li>
+          <li>Admin controls</li>
+        </ul>
+        <a class="btn btn-ghost tier-cta" href="#cta">Go bigger</a>
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">Enterprise</div>
+        <div class="tier-price">Custom</div>
+        <div class="tier-note">For organizations</div>
+        <ul>
+          <li>Custom run volume</li>
+          <li>Private, isolated setup</li>
+          <li>Single sign-on &amp; security review</li>
+          <li>Dedicated support</li>
+        </ul>
+        <a class="btn btn-ghost tier-cta" href="#cta">Talk to us</a>
+      </div>
+    </div>
+    <p class="muted" style="font-size:12px; margin-top:18px; text-align:center">
+      Need more on a given day? You're billed a small amount per extra run. Building on Ward to serve your own customers? <a class="accent" href="#cta">Ask about our partner program.</a>
+    </p>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="wrap">
+    <div class="eyebrow">Trust &amp; control</div>
+    <h2>Helpful, but never careless with your stuff.</h2>
+    <div class="trust">
+      <div class="card"><h3>🙋 Nothing without your OK</h3><p>Anything that sends an email, posts, or changes something waits for you to approve it — or keep an assistant read-only, so it can look and report but never act.</p></div>
+      <div class="card"><h3>🔒 Your accounts stay yours</h3><p>We never train AI on your data. Your passwords and app logins are handled securely and are never handed over to the assistants themselves.</p></div>
+      <div class="card"><h3>👁️ Nothing hidden</h3><p>Every run is written down. You can see exactly what an assistant looked at and what it did, any time — and switch it off whenever you like.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="eyebrow">Where we are</div>
+    <h2>Working today, growing fast.</h2>
+    <div class="road">
+      <div class="phase now">
+        <span class="tag mono">Working today</span>
+        <ul>
+          <li>Create assistants just by chatting</li>
+          <li>They run on their own, on a schedule</li>
+          <li>Memory &amp; no-repeats built in</li>
+          <li>Connect Gmail, Google Calendar &amp; Drive, and Notion</li>
+          <li>Approve-before-acting &amp; read-only controls</li>
+          <li>A simple page for each assistant</li>
+          <li>Your own account, in the cloud</li>
+        </ul>
+      </div>
+      <div class="phase next">
+        <span class="tag mono">Coming soon</span>
+        <ul>
+          <li>Check in from your phone</li>
+          <li>Notifications when something needs you</li>
+          <li>More apps to connect</li>
+          <li>A library of ready-made assistants to start from</li>
+        </ul>
+      </div>
+      <div class="phase later">
+        <span class="tag mono">Down the road</span>
+        <ul>
+          <li>Share assistants with family or a team</li>
+          <li>Even more connections &amp; sources</li>
+          <li>Partner program for makers building on Ward</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="cta">
+  <div class="wrap">
+    <h2>Say it once. It just keeps going.</h2>
+    <p class="sub">We're opening early access to people who'd rather have AI quietly handle the little things than sit around waiting to be asked.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:hello@axiomat.io?subject=Ward%20early%20access">Get early access</a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+  </div>
+</section>
+
 {{ end }}
