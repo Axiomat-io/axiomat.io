@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body>
+<body class="{{ if eq .Section `ward` }}theme-ward{{ else }}theme-ax{{ end }}">
   <header class="ax-header">
     {{ partial "header.html" . }}
   </header>

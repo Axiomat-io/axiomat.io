@@ -1,11 +1,25 @@
+{{ if eq .Section "ward" }}
 <div class="wrap nav-inner">
-  <a class="brand" href="/">
-    <span class="logo mono">W</span> Ward <span class="by">by Axiomat</span>
+  <a class="brand" href="/ward/">
+    {{ partial "ward-mark.html" . }} Ward <a class="by" href="/">by Axiomat</a>
   </a>
   <ul class="nav-links">
-    <li><a class="muted" href="/#uses">What it does</a></li>
-    <li><a class="muted" href="/#how">How it works</a></li>
-    <li><a class="muted" href="/#pricing">Pricing</a></li>
-    <li><a class="btn btn-primary" href="/#cta">Get early access</a></li>
+    <li><a class="muted" href="/ward/#uses">What it does</a></li>
+    <li><a class="muted" href="/ward/#how">How it works</a></li>
+    <li><a class="muted" href="/ward/#pricing">Pricing</a></li>
+    <li><a class="btn btn-primary" href="/ward/#cta">Get early access</a></li>
   </ul>
 </div>
+{{ else }}
+<div class="wrap nav-inner">
+  <a class="brand" href="/">
+    <img class="brand-mark" src="/images/axiomat-mark.png" alt="" aria-hidden="true"> Axiomat
+  </a>
+  <ul class="nav-links">
+    <li><a class="muted" href="/#what">What we do</a></li>
+    <li><a class="muted" href="/ward/">Ward</a></li>
+    <li><a class="muted" href="/#about">Who we are</a></li>
+    <li><a class="btn btn-primary" href="/#contact">Get in touch</a></li>
+  </ul>
+</div>
+{{ end }}
