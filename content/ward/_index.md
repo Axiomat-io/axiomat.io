@@ -1,4 +1,4 @@
 +++
 title = 'Ward'
-description = "Ward lets you create little AI assistants just by describing what you want — tracking a deadline, watching for news you care about, tidying your inbox. They run on their own, remember what they've told you, and only act with your OK."
+description = "Describe what you want in plain English and Ward builds an agent that does it — on its own, on a schedule, with memory and your approval. From competitor monitoring and market predictions to research synthesis and inbox triage."
 +++
