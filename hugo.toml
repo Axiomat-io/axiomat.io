@@ -1,12 +1,24 @@
-baseURL = 'https://preview.axiomat.io/'
+baseURL = 'https://axiomat.io/'
 languageCode = 'en-us'
 title = 'Axiomat — High-value software, low-friction experiences'
 theme = "axiom"
 enableRobotsTXT = true
-description = "Axiomat is a software and technology company building products that do more and ask less. After years building enterprise IT and security software, we're shipping products of our own — starting with Ward, our flagship product."
+description = "Axiomat builds software that does the work instead of handing it to you — starting with Ward, its first product."
+
+# The theme ships demo content (posts, tags, categories). We don't use it, and
+# taxonomy term pages would otherwise land in the sitemap as empty branded pages.
+disableKinds = ['taxonomy', 'term']
+
+[taxonomies]
 
 [params]
-description = "Axiomat is a software and technology company building products that do more and ask less — starting with Ward, our flagship product."
+description = "Axiomat builds software that does the work instead of handing it to you — starting with Ward, its first product."
+
+# Endpoint the early-access form POSTs JSON to (Formspree, Formspark, a
+# serverless function — anything that accepts {email, use_case, source}).
+# While this is empty the form is hidden and CTAs fall back to email links.
+formEndpoint = ""
+contactEmail = "hello@axiomat.io"
 
 [params.meta]
 favicon = true

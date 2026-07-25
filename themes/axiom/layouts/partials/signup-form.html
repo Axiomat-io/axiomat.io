@@ -1,0 +1,43 @@
+{{- /*
+  Early-access capture. Renders a real form when site.Params.formEndpoint is set,
+  and degrades to the email link when it isn't, so no CTA is ever a dead end.
+
+  Params: source (string) — recorded with the submission so we know which CTA converted.
+*/ -}}
+{{- $source := .source | default "site" -}}
+{{- $email := site.Params.contactEmail | default "hello@axiomat.io" -}}
+
+{{- with site.Params.formEndpoint }}
+<form class="signup" action="{{ . }}" method="post" data-signup novalidate>
+  <div class="signup-fields">
+    <label class="sr-only" for="signup-email-{{ $source }}">Email address</label>
+    <input
+      class="signup-input"
+      id="signup-email-{{ $source }}"
+      type="email"
+      name="email"
+      autocomplete="email"
+      placeholder="you@work.com"
+      required>
+    <button class="btn btn-primary signup-btn" type="submit">Get early access</button>
+  </div>
+  <label class="sr-only" for="signup-use-{{ $source }}">What you'd use it for</label>
+  <input
+    class="signup-input signup-input-wide"
+    id="signup-use-{{ $source }}"
+    type="text"
+    name="use_case"
+    maxlength="200"
+    placeholder="Optional: what would you point Ward at?">
+  <input type="hidden" name="source" value="{{ $source }}">
+  {{/* Honeypot — bots fill it, humans never see it. */}}
+  <input class="signup-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <p class="signup-msg" data-signup-msg role="status" aria-live="polite"></p>
+  <p class="signup-fine">No spam, no sharing your address. Or just email us at
+    <a class="accent" href="mailto:{{ $email }}?subject=Ward%20early%20access">{{ $email }}</a>.</p>
+</form>
+{{- else -}}
+<div class="cta-row">
+  <a class="btn btn-primary" href="mailto:{{ $email }}?subject=Ward%20early%20access">Get early access</a>
+</div>
+{{- end }}
