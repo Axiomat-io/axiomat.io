@@ -102,16 +102,26 @@ match how Ward actually works: no model training, operational logs retained for 
 OAuth connections, Google API Limited Use commitments, subprocessors, retention, and GDPR/CCPA/state
 rights. Linked from the footer and from `/ward/security/` (which previously said no policy existed).
 
-The page ends with a checklist for you. The blockers:
+Accepted as a work-in-progress while Ward is in early access/beta. Remaining work, kept here rather
+than in the rendered page:
+
 1. `[BRACKETED]` placeholders: legal entity name, mailing address, Azure region, EEA/UK transfer
    mechanism, retention periods, backup window, form/email/payment providers.
 2. **Retention periods are the big one** — "we keep logs" with no number is the weakest claim in the
-   document and the first thing a regulator asks about.
+   document and the first thing a regulator asks about. Pick a period you can technically enforce.
 3. Confirm the quality-review section is true. It currently says authorized personnel may review run
    content. Google user data is deliberately excluded from that practice — your systems have to
    actually honor that split, because the Limited Use language commits you to it.
-4. Lawyer review before Google OAuth verification. Google reads this page against your scopes.
-5. **Terms of Service still don't exist** and are needed before charging anyone.
+4. Lawyer review before Google OAuth verification. Google reads this page against your scopes, and
+   the Limited Use language must match real behavior.
+5. Consider self-hosting the Inter font to drop the Google Fonts disclosure entirely — one less
+   third party, one less paragraph. Ten-minute change in `partials/head.html`.
+6. **Terms of Service still don't exist** and are needed before charging anyone. This policy doesn't
+   cover payment terms, acceptable use, or liability.
+
+**Team-size language:** the policy no longer says "often one." Claims that expire on the first hire
+don't belong in a legal document nobody re-reads. It now says access is kept to the smallest group
+who can do the job, which stays true at any headcount.
 
 **Also resolved:** founding date now reads "the name on Andrew Meyer's work since 2019, and a Florida
 company since 2022" rather than a bare "Est. 2022". Hero pill now says "Tampa Bay, FL".

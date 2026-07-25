@@ -88,13 +88,11 @@ We keep logs, and we want to be direct about what that means, because it's the p
 
 **Why.** To keep Ward running, to reproduce and fix bugs you report, to detect abuse and security incidents, and to evaluate whether assistants are producing correct and safe output. When an assistant does something wrong, its logs are usually the only way to find out why.
 
-**Who can see it.** Access is limited to authorized personnel who need it for those purposes. Axiomat is a very small operation, which means in practice a small number of people — and honestly, often one. We don't grant log access to anyone outside that scope.
+**Who can see it.** Access is limited to authorized personnel who need it for those purposes, and we keep that group to the smallest number of people who can actually do the job. Anyone with access is bound by confidentiality obligations. We don't grant log access to anyone outside that scope.
 
 **What we don't do with it.** We don't use log content to train AI models. We don't sell it, share it for advertising, or use it to build a profile of you.
 
 **Content from Google accounts is treated more strictly** — see the Google section below. We do not review it for general quality-assurance purposes.
-
-> **Note for the site owner:** the "quality review" basis above needs to match what you actually do. If you never read run content and only look at metrics and stack traces, tighten this section — a narrower promise you keep is worth more than a broad one you don't need. See the checklist at the end.
 
 ---
 
@@ -180,7 +178,7 @@ Regardless of where you live, you can:
 
 **If you're in another U.S. state** with a comprehensive privacy law (Colorado, Connecticut, Virginia, Texas, and others), you have comparable rights, including the right to appeal a decision we make on your request.
 
-To exercise any of these, email **[hello@axiomat.io](mailto:hello@axiomat.io)**. We'll verify your identity through the email address on your account and respond within the time your law requires — within 45 days at the latest, and usually far sooner. It's a small operation; you'll get a real reply from a real person.
+To exercise any of these, email **[hello@axiomat.io](mailto:hello@axiomat.io)**. We'll verify your identity through the email address on your account and respond within the time your law requires — within 45 days at the latest, and usually far sooner. You'll get a real reply from a real person.
 
 ---
 
@@ -203,16 +201,3 @@ If we make a material change — new categories of data, a new purpose, a shorte
 ## Contact
 
 Questions, requests, or complaints: **[hello@axiomat.io](mailto:hello@axiomat.io)**, or write to the address at the top of this page.
-
----
-
-> ### ⚠️ Before publishing — for the site owner
->
-> This draft is written to match how Ward actually works, but it is **not legal advice**, and it is not finished until you do the following:
->
-> 1. **Fill every `[BRACKETED]` placeholder**: legal entity name, mailing address, Azure region, transfer mechanism, retention periods, backup window, and the form/email/payment providers you actually use.
-> 2. **Set real retention periods.** "We keep logs" without a number is the weakest claim in this document and the one regulators ask about first. Pick a period you can technically enforce, then enforce it.
-> 3. **Confirm the quality-review section is true.** It currently says authorized personnel may review run content. If you don't do that, narrow it. If you do, keep it — but note that the Google section deliberately excludes Google user data from that practice, and your systems must actually honor that split.
-> 4. **Have a lawyer review it** before Google OAuth verification. Google reviews this page against your requested scopes, and the Limited Use language above must match your real behavior.
-> 5. **Consider self-hosting the Inter font** to remove the Google Fonts disclosure entirely — one less third party, one less paragraph. It's a ten-minute change in `partials/head.html`.
-> 6. **You'll also need Terms of Service** before charging anyone. This policy doesn't cover payment terms, acceptable use, or liability.
