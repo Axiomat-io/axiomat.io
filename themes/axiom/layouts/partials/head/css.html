@@ -1,6 +1,11 @@
 {{- with resources.Get "css/main.css" }}
   {{- if eq hugo.Environment "development" }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- /* Dev serves /css/main.css at a fixed URL, so a browser that cached it
+           keeps using stale CSS against freshly-rebuilt HTML — new markup, old
+           styles, no obvious cause. Hang the content hash off the URL so it
+           changes exactly when the file does. */ -}}
+    {{- $v := (. | fingerprint "md5").Data.Integrity | replaceRE "^md5-" "" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}?h={{ $v }}">
   {{- else }}
     {{- with . | minify | fingerprint }}
       <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
