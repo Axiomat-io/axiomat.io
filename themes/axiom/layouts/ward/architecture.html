@@ -163,13 +163,13 @@ Slack · Gmail · GitHub · Notion ..."]
     <div class="eyebrow">ward — Azure Container App</div>
     <h2>Seven modules, one FastAPI process.</h2>
     <div class="grid grid-3">
-      <div class="card"><h3>🌐 <span class="mono">server.py</span></h3><p>The HTTP surface — agent CRUD, chat, run triggers, billing endpoints, admin.</p></div>
-      <div class="card"><h3>🧠 Agent Runtime</h3><p><span class="mono">agent.py</span>, <span class="mono">dynamic.py</span> — runs the tool loop against Azure OpenAI, resolves an agent's power level to a backing model at build time.</p></div>
-      <div class="card"><h3>💳 Metering &amp; Billing</h3><p><span class="mono">metering.py</span>, <span class="mono">tiers.py</span>, <span class="mono">billing.py</span> — weighted daily run quota per workspace, Stripe Checkout + webhook sync to tier.</p></div>
-      <div class="card"><h3>🔌 MCP Manager</h3><p><span class="mono">mcp.py</span>, <span class="mono">mcp_oauth.py</span> — discovers, authorizes, and calls user-connected MCP servers. No first-party integrations.</p></div>
-      <div class="card"><h3>🛡️ Policy / Audit / Provenance</h3><p><span class="mono">policy.py</span>, <span class="mono">audit.py</span>, <span class="mono">provenance.py</span> — deny lists, approval gates, run-level audit trail, source attribution on retrieved data.</p></div>
-      <div class="card"><h3>🔔 Notifications &amp; Webhooks</h3><p><span class="mono">notifications.py</span>, <span class="mono">webhooks.py</span> — outbound alerts and inbound triggers for agent runs.</p></div>
-      <div class="card"><h3>🪪 Auth</h3><p><span class="mono">auth.py</span> — session handling in front of Auth0's hosted login.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "globe") }}<span class="mono">server.py</span></h3><p>The HTTP surface — agent CRUD, chat, run triggers, billing endpoints, admin.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "brain") }}Agent Runtime</h3><p><span class="mono">agent.py</span>, <span class="mono">dynamic.py</span> — runs the tool loop against Azure OpenAI, resolves an agent's power level to a backing model at build time.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "card") }}Metering &amp; Billing</h3><p><span class="mono">metering.py</span>, <span class="mono">tiers.py</span>, <span class="mono">billing.py</span> — weighted daily run quota per workspace, Stripe Checkout + webhook sync to tier.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "plug") }}MCP Manager</h3><p><span class="mono">mcp.py</span>, <span class="mono">mcp_oauth.py</span> — discovers, authorizes, and calls user-connected MCP servers. No first-party integrations.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "shield") }}Policy / Audit / Provenance</h3><p><span class="mono">policy.py</span>, <span class="mono">audit.py</span>, <span class="mono">provenance.py</span> — deny lists, approval gates, run-level audit trail, source attribution on retrieved data.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "bell") }}Notifications &amp; Webhooks</h3><p><span class="mono">notifications.py</span>, <span class="mono">webhooks.py</span> — outbound alerts and inbound triggers for agent runs.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "badge") }}Auth</h3><p><span class="mono">auth.py</span> — session handling in front of Auth0's hosted login.</p></div>
     </div>
   </div>
 </section>
@@ -193,8 +193,8 @@ Slack · Gmail · GitHub · Notion ..."]
     <div class="eyebrow">Data &amp; storage</div>
     <h2>Isolation enforced by the database, not app code.</h2>
     <div class="grid grid-2">
-      <div class="card"><h3>🗄️ <span class="mono">ward-pg</span></h3><p>Azure Postgres Flexible Server. Every table carries row-level security keyed to <span class="mono">workspace_id</span> — no query can read across workspaces, even by mistake. This is also where the highest-sensitivity data lives: <span class="mono">mcp_oauth</span> stores encrypted third-party OAuth tokens for every MCP server a user connects.</p></div>
-      <div class="card"><h3>📦 Artifact storage</h3><p>Azure Blob (or local filesystem in dev) behind a pluggable <span class="mono">ArtifactStore</span> — agent-produced files, chat attachments.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "database") }}<span class="mono">ward-pg</span></h3><p>Azure Postgres Flexible Server. Every table carries row-level security keyed to <span class="mono">workspace_id</span> — no query can read across workspaces, even by mistake. This is also where the highest-sensitivity data lives: <span class="mono">mcp_oauth</span> stores encrypted third-party OAuth tokens for every MCP server a user connects.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "package") }}Artifact storage</h3><p>Azure Blob (or local filesystem in dev) behind a pluggable <span class="mono">ArtifactStore</span> — agent-produced files, chat attachments.</p></div>
     </div>
   </div>
 </section>
@@ -204,10 +204,10 @@ Slack · Gmail · GitHub · Notion ..."]
     <div class="eyebrow">External services</div>
     <h2>The model, the processor, the integrations — all outside the app.</h2>
     <div class="grid grid-2">
-      <div class="card"><h3>🤖 Azure OpenAI — AI Foundry</h3><p>Three deployments back the three power levels: <span class="mono">gpt-5.6-luna</span> (Normal), <span class="mono">gpt-5.6-terra</span> (High), <span class="mono">gpt-5.6-sol</span> (Max) — swappable per-catalog, never hardcoded on an agent.</p></div>
-      <div class="card"><h3>💳 Stripe</h3><p>Checkout for self-serve upgrades; signature-verified webhooks sync subscription state back to a workspace's tier.</p></div>
-      <div class="card"><h3>🔑 Auth0</h3><p>Hosted SPA login — Ward never stores a password.</p></div>
-      <div class="card"><h3>🧩 User-connected MCP servers</h3><p>Slack, Gmail, GitHub, Notion, and anything else a user adds — the integration surface is MCP, not a Ward-built connector.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "agent") }}Azure OpenAI — AI Foundry</h3><p>Three deployments back the three power levels: <span class="mono">gpt-5.6-luna</span> (Normal), <span class="mono">gpt-5.6-terra</span> (High), <span class="mono">gpt-5.6-sol</span> (Max) — swappable per-catalog, never hardcoded on an agent.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "card") }}Stripe</h3><p>Checkout for self-serve upgrades; signature-verified webhooks sync subscription state back to a workspace's tier.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "key") }}Auth0</h3><p>Hosted SPA login — Ward never stores a password.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "modules") }}User-connected MCP servers</h3><p>Slack, Gmail, GitHub, Notion, and anything else a user adds — the integration surface is MCP, not a Ward-built connector.</p></div>
     </div>
   </div>
 </section>
@@ -218,10 +218,10 @@ Slack · Gmail · GitHub · Notion ..."]
     <h2>What this diagram doesn't show yet.</h2>
     <p class="lede">This is a snapshot of what's actually deployed today, not an aspirational one — so here's what's deliberately left off, and why:</p>
     <div class="grid grid-2">
-      <div class="card"><h3>🔓 No Key Vault</h3><p>Secrets (Stripe, Auth0, Azure OpenAI, the DB connection string) are Azure Container App secrets, injected as env vars — not Key Vault + managed identity.</p></div>
-      <div class="card"><h3>🌐 No VNet / private endpoint</h3><p><span class="mono">ward-pg</span> is reachable over its public endpoint, gated by an IP allowlist — not a private network path.</p></div>
-      <div class="card"><h3>📈 No dedicated observability</h3><p>Tracing hooks exist in the code (<span class="mono">tracing.py</span>) but no APM/exporter is wired up yet — logs land in the Container App environment's default Log Analytics workspace.</p></div>
-      <div class="card"><h3>📦 Shared container registry</h3><p><span class="mono">axiomatioacr</span> also serves other Axiomat projects — it isn't Ward-dedicated infrastructure.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "unlock") }}No Key Vault</h3><p>Secrets (Stripe, Auth0, Azure OpenAI, the DB connection string) are Azure Container App secrets, injected as env vars — not Key Vault + managed identity.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "globe") }}No VNet / private endpoint</h3><p><span class="mono">ward-pg</span> is reachable over its public endpoint, gated by an IP allowlist — not a private network path.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "chart") }}No dedicated observability</h3><p>Tracing hooks exist in the code (<span class="mono">tracing.py</span>) but no APM/exporter is wired up yet — logs land in the Container App environment's default Log Analytics workspace.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "package") }}Shared container registry</h3><p><span class="mono">axiomatioacr</span> also serves other Axiomat projects — it isn't Ward-dedicated infrastructure.</p></div>
     </div>
   </div>
 </section>

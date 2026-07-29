@@ -88,12 +88,12 @@
       just by asking:
     </p>
     <div class="grid grid-2" style="margin-top:28px">
-      <div class="card"><h3>🔎 A competitor &amp; market monitor</h3><p>Point it at rivals, a sector, or a set of tickers. Each run it researches what actually changed, writes it up, and keeps a running intelligence brief — the standing report you never have time to compile.</p></div>
-      <div class="card"><h3>📈 A prediction engine that grades itself</h3><p>Give it stocks or themes and it makes explicit, falsifiable calls, stores them, and scores itself when they come due — an honest paper track record of its own reasoning. Research only: paper positions, never real trades, and nothing here is financial advice.</p></div>
-      <div class="card"><h3>📚 A research synthesizer</h3><p>Hand it a topic and it digs, dedupes against what it's already found, and keeps a living, evidence-first brief — in the app, or synced to Notion where you work.</p></div>
-      <div class="card"><h3>✉️ Your inbox, triaged</h3><p>Connect Gmail and it sorts the noise, summarizes the threads that matter, and drafts replies for you to approve before anything sends.</p></div>
-      <div class="card"><h3>📅 Your calendar, prepped</h3><p>Connect Google Calendar and it reminds you, preps you for what's next, and helps you get things on the books.</p></div>
-      <div class="card"><h3>✅ …and the small stuff too</h3><p>Renewals, warranties, a news digest, the passport that expires next spring. The low-stakes things you keep meaning to track — handled, so they're off your mind.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "search") }}A competitor &amp; market monitor</h3><p>Point it at rivals, a sector, or a set of tickers. Each run it researches what actually changed, writes it up, and keeps a running intelligence brief — the standing report you never have time to compile.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "chart") }}A prediction engine that grades itself</h3><p>Give it stocks or themes and it makes explicit, falsifiable calls, stores them, and scores itself when they come due — an honest paper track record of its own reasoning. Research only: paper positions, never real trades, and nothing here is financial advice.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "book") }}A research synthesizer</h3><p>Hand it a topic and it digs, dedupes against what it's already found, and keeps a living, evidence-first brief — in the app, or synced to Notion where you work.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "inbox") }}Your inbox, triaged</h3><p>Connect Gmail and it sorts the noise, summarizes the threads that matter, and drafts replies for you to approve before anything sends.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "calendar") }}Your calendar, prepped</h3><p>Connect Google Calendar and it reminds you, preps you for what's next, and helps you get things on the books.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "check") }}…and the small stuff too</h3><p>Renewals, warranties, a news digest, the passport that expires next spring. The low-stakes things you keep meaning to track — handled, so they're off your mind.</p></div>
     </div>
     <div class="callout">
       <p>It's like having a few tireless little assistants who each handle one thing — keeping track for you, staying quiet until it matters, and mostly looking after themselves.</p>
@@ -152,12 +152,12 @@
         <div class="step-body">
           <div class="bucket-list">
             <div class="bucket">
-              <div class="bucket-head"><span>📋</span> See everything, any time</div>
+              <div class="bucket-head">{{ partial "icon.html" (dict "name" "clipboard" "size" 17) }} See everything, any time</div>
               <div class="bucket-item"><span class="arrow">→</span> Each assistant gets its own simple page — the latest results, at a glance, whenever you want.</div>
               <div class="bucket-item"><span class="arrow">→</span> You can always see exactly what it looked at and what it did.</div>
             </div>
             <div class="bucket">
-              <div class="bucket-head"><span>✅</span> Nothing happens behind your back</div>
+              <div class="bucket-head">{{ partial "icon.html" (dict "name" "check" "size" 17) }} Nothing happens behind your back</div>
               <div class="bucket-item"><span class="arrow">→</span> Anything that sends, posts, or changes something waits for your OK first.</div>
               <div class="bucket-item"><span class="arrow">→</span> Or keep an assistant "look, don't touch" — it can read and report, but never act.</div>
             </div>
@@ -203,7 +203,7 @@
           <img src="/images/ward-themes.png" width="3420" height="1868" alt="Ward's appearance settings showing a grid of eleven color-scheme themes — Ward default, Slate, Midnight, Dusk, Patina, Neon Tokyo, Ether, Canvas, Fog, Chalk, and Skylight." loading="lazy" />
         </div>
         <div class="custom-copy">
-          <h3>🎨 Pick a look that fits you</h3>
+          <h3>{{ partial "icon.html" (dict "name" "palette") }}Pick a look that fits you</h3>
           <p>Eleven built-in themes — from Ward's default to Midnight, Dusk, Patina, Neon Tokyo, Canvas and more. Light or dark, calm or vivid; switch in a click and every assistant follows.</p>
         </div>
       </div>
@@ -218,7 +218,7 @@
           <img src="/images/ward-reshape.png" width="3420" height="1870" alt="A Ward assistant's dashboard with a scored-predictions table and a live prediction-score trend chart, next to a chat where the user asked for a trend chart and then said 'I want a chart, not a panel.'" loading="lazy" />
         </div>
         <div class="custom-copy">
-          <h3>💬 Reshape the dashboard by asking</h3>
+          <h3>{{ partial "icon.html" (dict "name" "chat") }}Reshape the dashboard by asking</h3>
           <p>Prefer a chart to a table? Just say so. Here, "can we add a trend chart tracking your predictions?" became a live scoring chart — and "I want a chart, not a panel" reshaped it again. Each assistant builds the exact view you ask for.</p>
         </div>
       </div>
@@ -243,32 +243,32 @@
     </p>
     <div class="trust">
       <div class="card">
-        <h3>🧠 Your second brain</h3>
+        <h3>{{ partial "icon.html" (dict "name" "brain") }}Your second brain</h3>
         <p>The place you keep notes, trackers, and running logs. Ward keeps a page or database current — a digest, a reading list, a decision log — so you're not copying things across by hand.</p>
         <span class="conn-live mono">Notion today</span>
       </div>
       <div class="card">
-        <h3>✉️ Your inbox</h3>
+        <h3>{{ partial "icon.html" (dict "name" "inbox") }}Your inbox</h3>
         <p>Sort the noise, surface the threads that actually matter, and draft replies in your voice — nothing sends until you say so.</p>
         <span class="conn-live mono">Gmail today</span>
       </div>
       <div class="card">
-        <h3>📅 Your schedule</h3>
+        <h3>{{ partial "icon.html" (dict "name" "calendar") }}Your schedule</h3>
         <p>See what's coming, get prepped for it before it starts, and put things on the books without opening a calendar app.</p>
         <span class="conn-live mono">Google Calendar today</span>
       </div>
       <div class="card">
-        <h3>🗂️ Your files</h3>
+        <h3>{{ partial "icon.html" (dict "name" "files") }}Your files</h3>
         <p>Find the document, pull the details out of it, and file new ones where they belong instead of wherever they landed.</p>
         <span class="conn-live mono">Google Drive today</span>
       </div>
       <div class="card">
-        <h3>🌐 The open web</h3>
+        <h3>{{ partial "icon.html" (dict "name" "globe") }}The open web</h3>
         <p>No connection needed. Your assistants can research, watch a page, and pull in what's public — filtered so a hostile page can't reach anywhere it shouldn't.</p>
         <span class="conn-live mono">Built in</span>
       </div>
       <div class="card">
-        <h3>🔗 Whatever's next</h3>
+        <h3>{{ partial "icon.html" (dict "name" "link") }}Whatever's next</h3>
         <p>New connections land regularly, and the list is shaped by what people ask for. Need one Ward doesn't have yet? Tell it — it'll ask us for you.</p>
       </div>
     </div>
@@ -424,9 +424,9 @@
     <div class="eyebrow">Trust &amp; control</div>
     <h2>Helpful, but never careless with your stuff.</h2>
     <div class="trust">
-      <div class="card"><h3>🙋 Nothing without your OK</h3><p>Anything that sends an email, posts, or changes something waits for you to approve it — or keep an assistant read-only, so it can look and report but never act.</p></div>
-      <div class="card"><h3>🔒 Your accounts stay yours</h3><p>Connect the apps you choose, grant only what each assistant needs, and disconnect any time. We never train AI on your data.</p></div>
-      <div class="card"><h3>👁️ Nothing hidden</h3><p>Every run is written down. You can see exactly what an assistant looked at and what it did, any time — and switch it off whenever you like.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "hand") }}Nothing without your OK</h3><p>Anything that sends an email, posts, or changes something waits for you to approve it — or keep an assistant read-only, so it can look and report but never act.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "lock") }}Your accounts stay yours</h3><p>Connect the apps you choose, grant only what each assistant needs, and disconnect any time. We never train AI on your data.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "eye") }}Nothing hidden</h3><p>Every run is written down. You can see exactly what an assistant looked at and what it did, any time — and switch it off whenever you like.</p></div>
     </div>
     <p class="muted" style="font-size:13px; margin-top:20px; text-align:center">
       Want the technical details — encryption, workspace isolation, egress controls, and which AI models we use? <a class="accent" href="/ward/security/">Read the security overview →</a>

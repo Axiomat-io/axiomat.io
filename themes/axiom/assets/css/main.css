@@ -490,6 +490,15 @@ h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); letter-spacin
 .prose blockquote p { margin: 0; color: var(--text); }
 .prose hr { border: 0; border-top: 1px solid var(--border); margin: 40px 0; }
 
+/* icons — monoline family, inherit colour from their context (design system:
+   never recolour with a literal). Accent inside headings, where they replaced
+   the emoji that used to carry the colour. */
+.icon { flex-shrink: 0; display: inline-block; vertical-align: -0.15em; }
+.card h3 .icon,
+.bucket-head .icon,
+.custom-copy h3 .icon,
+.mode-name .icon { color: var(--accent); }
+
 /* product updates */
 .updates { display: flex; flex-direction: column; }
 .update-item { padding: 28px 0; border-bottom: 1px solid var(--border); }

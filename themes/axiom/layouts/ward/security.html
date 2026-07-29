@@ -17,10 +17,10 @@
     <div class="eyebrow">Connections</div>
     <h2>Your accounts connect over OAuth — and stay revocable.</h2>
     <div class="grid grid-2">
-      <div class="card"><h3>🔑 OAuth, through the provider</h3><p>You connect an app through its own consent screen (Google, Notion, and others). You approve the access; Ward receives a scoped token — never your password.</p></div>
-      <div class="card"><h3>🔒 Tokens encrypted at rest</h3><p>Connection tokens and secrets are encrypted before they're written to the database, so a leaked backup or snapshot yields ciphertext, not live credentials.</p></div>
-      <div class="card"><h3>↩️ Disconnect any time</h3><p>Revoke a connection from Settings whenever you like and Ward stops using it. The assistants themselves never see the raw credentials.</p></div>
-      <div class="card"><h3>🙅 Grant only what's needed</h3><p>Keep an assistant read-only, or require your approval before it changes anything — your call, per assistant.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "key") }}OAuth, through the provider</h3><p>You connect an app through its own consent screen (Google, Notion, and others). You approve the access; Ward receives a scoped token — never your password.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "lock") }}Tokens encrypted at rest</h3><p>Connection tokens and secrets are encrypted before they're written to the database, so a leaked backup or snapshot yields ciphertext, not live credentials.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "revoke") }}Disconnect any time</h3><p>Revoke a connection from Settings whenever you like and Ward stops using it. The assistants themselves never see the raw credentials.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "deny") }}Grant only what's needed</h3><p>Keep an assistant read-only, or require your approval before it changes anything — your call, per assistant.</p></div>
     </div>
   </div>
 </section>
@@ -30,8 +30,8 @@
     <div class="eyebrow">Isolation &amp; access</div>
     <h2>Your workspace is walled off at the database.</h2>
     <div class="grid grid-2">
-      <div class="card"><h3>🧱 Row-level isolation</h3><p>Each workspace's data is separated by Postgres row-level security — enforced inside the database, so no query can read across workspaces, even by mistake.</p></div>
-      <div class="card"><h3>🪪 Verified sign-in</h3><p>Authentication runs on Auth0. Every API request is checked against a verified token before it can touch your data.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "wall") }}Row-level isolation</h3><p>Each workspace's data is separated by Postgres row-level security — enforced inside the database, so no query can read across workspaces, even by mistake.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "badge") }}Verified sign-in</h3><p>Authentication runs on Auth0. Every API request is checked against a verified token before it can touch your data.</p></div>
     </div>
   </div>
 </section>
@@ -53,10 +53,10 @@
     <div class="eyebrow">What assistants can do</div>
     <h2>Nothing consequential happens without a record — or your OK.</h2>
     <div class="grid grid-2">
-      <div class="card"><h3>✅ Approve before acting</h3><p>Anything that sends, posts, or changes something can be gated behind your approval. Unattended runs skip un-approved actions rather than guessing.</p></div>
-      <div class="card"><h3>🧾 Every action is logged</h3><p>Each durable step an assistant takes — what it wrote, where, and whether it worked — is captured in an audit trail you can inspect, run by run.</p></div>
-      <div class="card"><h3>🌐 Safe by default on the open web</h3><p>When an assistant fetches a web page, the request is filtered to block internal systems and cloud metadata and forwards no credentials — so a malicious page can't pivot inward.</p></div>
-      <div class="card"><h3>👁️ Look, don't touch</h3><p>Run any assistant read-only: it can read and report, but never act.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "check") }}Approve before acting</h3><p>Anything that sends, posts, or changes something can be gated behind your approval. Unattended runs skip un-approved actions rather than guessing.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "receipt") }}Every action is logged</h3><p>Each durable step an assistant takes — what it wrote, where, and whether it worked — is captured in an audit trail you can inspect, run by run.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "globe") }}Safe by default on the open web</h3><p>When an assistant fetches a web page, the request is filtered to block internal systems and cloud metadata and forwards no credentials — so a malicious page can't pivot inward.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "eye") }}Look, don't touch</h3><p>Run any assistant read-only: it can read and report, but never act.</p></div>
     </div>
   </div>
 </section>
@@ -66,8 +66,8 @@
     <div class="eyebrow">Hosting &amp; data</div>
     <h2>Where your data lives, and how to remove it.</h2>
     <div class="grid grid-2">
-      <div class="card"><h3>☁️ Runs on Microsoft Azure</h3><p>Ward's application and database run on Microsoft Azure.</p></div>
-      <div class="card"><h3>🗑️ Yours to remove</h3><p>Delete an assistant and its records from the app any time, or disconnect an integration to revoke access. Want your whole account and its data removed? Email us and we'll take care of it.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "cloud") }}Runs on Microsoft Azure</h3><p>Ward's application and database run on Microsoft Azure.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "trash") }}Yours to remove</h3><p>Delete an assistant and its records from the app any time, or disconnect an integration to revoke access. Want your whole account and its data removed? Email us and we'll take care of it.</p></div>
     </div>
   </div>
 </section>
