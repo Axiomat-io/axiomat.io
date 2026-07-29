@@ -1,3 +1,80 @@
 {{ define "main" }}
-  {{ .Content }}
+
+<header class="hero hero-company">
+  <div class="wrap">
+    <span class="pill">Independent software studio · Tampa Bay, FL</span>
+    <h1>High-value software.<br><span class="grad">Low-friction experiences.</span></h1>
+    <p class="sub">
+      Axiomat builds software that does the work instead of handing it to you. The first
+      product is Ward: describe what you want handled, and it builds an agent that does it —
+      on its own, on a schedule.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/ward/">Meet Ward<span class="link-arrow"></span></a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<!-- FLAGSHIP PRODUCT: WARD -->
+<section id="ward">
+  <div class="wrap">
+    <div class="eyebrow">What we're building</div>
+    <div class="product-panel">
+      <div class="product-head">
+        {{ partial "ward-mark.html" . }}
+        <div>
+          <div class="product-name">Ward</div>
+          <div class="product-tag">Describe it. Ward builds the agent.</div>
+        </div>
+      </div>
+      <p class="product-body">
+        Tell Ward what you'd like handled — monitor a competitor, track and score market
+        predictions, synthesize research, stay on top of your inbox — and it builds an agent
+        that does it on its own, on a schedule, with memory and your approval. No builder, no
+        config, no code. It's the clearest expression of what Axiomat is after: software that
+        does more and asks less.
+      </p>
+      <div class="cta-row" style="margin-top:24px; justify-content:flex-start;">
+        <a class="btn btn-primary" href="/ward/">Explore Ward<span class="link-arrow"></span></a>
+        <a class="btn btn-ghost" href="/ward/#cta">Get early access</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">Who's behind it</div>
+    <h2>Built on software that wasn't allowed to fail.</h2>
+    <div class="why-truth">
+      <p>Axiomat is Andrew Meyer's studio — operating under that name since 2019, a Florida
+      company since 2022. Before Ward, the work was enterprise IT and security software running
+      inside organizations that operate worldwide: multi-tenant SaaS architecture, integrations
+      with major security platforms, and the technical side of large post-merger IT
+      integrations. Ward came out of the complaint that ran through all of it — the software
+      worked, it just made people work for it.</p>
+    </div>
+    <div class="grid grid-2" style="margin-top:28px">
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "shield") }}Security-shaped habits</h3><p>Years of building security software leaves a mark. Least privilege, approval before anything changes, encrypted credentials, and an audit trail aren't features bolted onto Ward — they're how it was built in the first place.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "wrench") }}Product, not slideware</h3><p>Ward is live software in early access with real users, not a deck. What's shipped is on the Ward page; what isn't yet is listed there too.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "bolt") }}High value, low friction</h3><p>The bar for everything here: it should do more for you and ask less of you. If it adds work, it isn't done.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "search") }}Check the work</h3><p>Open source and side projects live on <a class="accent" href="https://github.com/Axiomat-io">GitHub</a>. Ward's data handling is documented in detail on its <a class="accent" href="/ward/security/">security page</a>, including what isn't in place yet.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="final" id="contact">
+  <div class="wrap">
+    <h2>Let's talk.</h2>
+    <p class="sub">Questions about Ward, an idea for it, or something you'd like built? It goes straight to Andrew.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:{{ site.Params.contactEmail | default `hello@axiomat.io` }}?subject=Hello%20Axiomat">{{ site.Params.contactEmail | default "hello@axiomat.io" }}</a>
+      <a class="btn btn-ghost" href="/ward/">Meet Ward<span class="link-arrow"></span></a>
+    </div>
+  </div>
+</section>
+
 {{ end }}

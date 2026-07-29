@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<section class="legal-head">
+  <div class="wrap">
+    <div class="eyebrow"><a class="accent" href="/ward/updates/">Product updates</a></div>
+    <h1 class="legal-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+    <p class="legal-dates mono">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      {{ with .Params.label }} · {{ . }}{{ end }}
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="/ward/updates/"><span class="link-arrow-back"></span>All updates</a>
+      {{ partial "trial-cta.html" (dict "class" "btn-primary" "prefix" "/ward/") }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

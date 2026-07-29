@@ -1,0 +1,34 @@
+{{ define "main" }}
+
+<section class="legal-head">
+  <div class="wrap">
+    <div class="eyebrow">{{ .Params.eyebrow | default "Legal" }}</div>
+    <h1 class="legal-title">{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="lede">{{ . }}</p>{{ end }}
+    <p class="legal-dates mono">
+      {{ with .Params.effective }}Effective {{ . }}{{ end }}
+      {{ with .Lastmod }} · Last updated {{ . | time.Format "January 2, 2006" }}{{ end }}
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Questions about your data?</h2>
+    <p class="sub">Ask and we'll answer plainly.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:{{ site.Params.contactEmail | default `hello@axiomat.io` }}?subject=Privacy%20question">Email us</a>
+      <a class="btn btn-ghost" href="/ward/security/">Security overview<span class="link-arrow"></span></a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

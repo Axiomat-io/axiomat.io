@@ -1,0 +1,514 @@
+{{ define "main" }}
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill"><span class="dot">●</span> Now in early access</span>
+    <h1>Describe it.<br><span class="grad">Ward builds the agent.</span></h1>
+    <p class="sub">
+      Tell Ward what you'd like handled — monitor a competitor, track and score market
+      predictions, synthesize research, or just stay on top of your inbox — and it builds an
+      agent that does it, on its own, on a schedule. No apps to wire together, no prompts to
+      babysit. Describe it once, and it keeps at it in the background.
+    </p>
+    <div class="cta-row">
+      {{ partial "trial-cta.html" (dict "class" "btn-primary") }}
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+
+    <div class="workforce-strip">
+      <div class="worker-chip"><span class="dot"></span> Competitor monitor</div>
+      <div class="worker-chip"><span class="dot"></span> Market-prediction engine</div>
+      <div class="worker-chip"><span class="dot"></span> Research synthesizer</div>
+      <div class="worker-chip"><span class="dot"></span> Inbox &amp; calendar</div>
+      <div class="worker-chip"><span class="dot"></span> News watcher</div>
+      <div class="worker-chip muted" style="border-style:dashed">+ your idea here</div>
+    </div>
+  </div>
+</header>
+
+<!-- WATCH IT HAPPEN -->
+<section id="watch">
+  <div class="wrap">
+    <div class="eyebrow">Watch it happen</div>
+    <h2>Say it like you'd say it out loud. Ward builds the rest.</h2>
+    <p class="lede">
+      No builder, no config, no code. A plain — even half-joking — sentence becomes a scheduled
+      agent with its own tools, memory, and dashboard. This is a real Ward session, lightly trimmed:
+    </p>
+
+    <div class="chat-demo" data-chat-demo>
+      <div class="chat-msg chat-you">we're starting from scratch — build an agent that goes out, finds and researches stocks, then makes and tracks predictions against them.</div>
+      <div class="chat-msg chat-ward"><strong>Built it. Stock Research &amp; Prediction Hunter.</strong> Each run it scans the market, researches candidates (overview, news, price history, options flow, web search), writes explicit, falsifiable predictions as durable records, and scores them once they come due — with an Open Predictions table, a Recently Scored table, a research brief, and a daily schedule. Want to tune the universe, horizon, and style?</div>
+      <div class="chat-msg chat-you">what if my answer is growthmaxxing</div>
+      <div class="chat-msg chat-ward">Then I'll bias it to growth — momentum, catalysts, estimate revisions, category winners; less value, income, or defensive names. Selective: 1–3 high-conviction calls per run over a 2–8 week horizon. Want me to make that its mandate?</div>
+      <div class="chat-msg chat-you">ship it</div>
+      <div class="chat-msg chat-ward"><strong>Shipped. Growthmaxxing Stock Research &amp; Prediction Hunter</strong> — biased to growth, makes and scores its own calls, runs daily.</div>
+    </div>
+
+    <p class="note">
+      Three messages — one of them a joke — and Ward supplied the tools, the falsifiable
+      predictions, the self-scoring, the duplicate-suppression, the dashboard, and the schedule.
+      That's the whole trick: you bring the wish, it brings the work.
+    </p>
+    <p class="fine">
+      Market agents are research only — paper positions, never real trades. Nothing Ward
+      produces is financial advice.
+    </p>
+  </div>
+</section>
+
+<!-- APP SCREENSHOT -->
+<div class="shot-band">
+  <div class="app-frame">
+    <div class="app-window">
+      <div class="app-chrome">
+        <span class="chrome-dot"></span>
+        <span class="chrome-dot"></span>
+        <span class="chrome-dot"></span>
+      </div>
+      <img src="/images/app-screenshot.png" width="3420" height="1874" alt="Ward showing a personal assistant's live daily brief with its own dashboard, and a note that repeat items were skipped" />
+    </div>
+    <div class="shot-callouts">
+      <div class="shot-callout"><span class="num">1</span>Assistants for whatever you care about — each one you created just by chatting, no code.</div>
+      <div class="shot-callout"><span class="num">2</span>"4 items skipped as already seen" — it remembers what it's told you, so you rarely see the same thing twice.</div>
+      <div class="shot-callout"><span class="num">3</span>Every assistant gets its own tidy page you can check any time — it builds that for you too.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IT DOES -->
+<section id="uses">
+  <div class="wrap">
+    <div class="eyebrow">What it does</div>
+    <h2>If you can describe it, Ward can run it.</h2>
+    <p class="lede">
+      People point Ward at real, recurring work — watching competitors, tracking predictions,
+      synthesizing research — and at the small stuff they never get to. Each one is an agent
+      that handles it on a schedule and only speaks up when it matters. A few people have built,
+      just by asking:
+    </p>
+    <div class="grid grid-2" style="margin-top:28px">
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "search") }}A competitor &amp; market monitor</h3><p>Point it at rivals, a sector, or a set of tickers. Each run it researches what actually changed, writes it up, and keeps a running intelligence brief — the standing report you never have time to compile.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "chart") }}A prediction engine that grades itself</h3><p>Give it stocks or themes and it makes explicit, falsifiable calls, stores them, and scores itself when they come due — an honest paper track record of its own reasoning. Research only: paper positions, never real trades, and nothing here is financial advice.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "book") }}A research synthesizer</h3><p>Hand it a topic and it digs, dedupes against what it's already found, and keeps a living, evidence-first brief — in the app, or synced to Notion where you work.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "inbox") }}Your inbox, triaged</h3><p>Connect Gmail and it sorts the noise, summarizes the threads that matter, and drafts replies for you to approve before anything sends.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "calendar") }}Your calendar, prepped</h3><p>Connect Google Calendar and it reminds you, preps you for what's next, and helps you get things on the books.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "check") }}…and the small stuff too</h3><p>Renewals, warranties, a news digest, the passport that expires next spring. The low-stakes things you keep meaning to track — handled, so they're off your mind.</p></div>
+    </div>
+    <div class="callout">
+      <p>It's like having a few tireless little assistants who each handle one thing — keeping track for you, staying quiet until it matters, and mostly looking after themselves.</p>
+      <div class="attr">— and you built every one of them just by asking</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>You have a conversation. It does the rest.</h2>
+    <p class="lede">
+      No setup screens, no rules to configure, no code. You chat with Ward like you'd text a
+      capable friend — and it turns what you said into an assistant that quietly gets it done.
+    </p>
+
+    <div class="demo-steps">
+
+      <div class="demo-step">
+        <div class="step-label">
+          <div class="step-num">Step 1</div>
+          <div class="step-title">Just say what you want</div>
+        </div>
+        <div class="step-body">
+          <div class="req-list">
+            <div class="req"><span class="from">You</span><span class="msg">Keep an eye on my stock watchlist and give me a short read each morning on what moved and why.</span></div>
+            <div class="req"><span class="from">You</span><span class="msg">Remind me before any of my subscriptions renew, and before my passport expires.</span></div>
+            <div class="req"><span class="from">You</span><span class="msg">Every evening, sum up the important emails from my inbox and draft replies I can approve.</span></div>
+          </div>
+          <p class="note">Plain English. Ward figures out what it needs and builds the assistant for you.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="step-label">
+          <div class="step-num">Step 2</div>
+          <div class="step-title">It runs on its own</div>
+        </div>
+        <div class="step-body">
+          <div class="worker-list">
+            <div class="worker-row"><span class="dot"></span> <span>Works on a schedule</span><span class="job">— every morning, every hour, or when something happens. You don't have to be around.</span></div>
+            <div class="worker-row"><span class="dot"></span> <span>Remembers as it goes</span><span class="job">— it knows what it already told you, so you rarely get the same thing twice.</span></div>
+            <div class="worker-row"><span class="dot"></span> <span>Grows into the job</span><span class="job">— when an assistant needs something new to do its work better, Ward can add it, with little effort from you.</span></div>
+          </div>
+          <p class="note">Set it up once. It keeps working in the background — and flags anything that needs your call.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="step-label">
+          <div class="step-num">Step 3</div>
+          <div class="step-title">You stay in control</div>
+        </div>
+        <div class="step-body">
+          <div class="bucket-list">
+            <div class="bucket">
+              <div class="bucket-head">{{ partial "icon.html" (dict "name" "clipboard" "size" 17) }} See everything, any time</div>
+              <div class="bucket-item">Each assistant gets its own simple page — the latest results, at a glance, whenever you want.</div>
+              <div class="bucket-item">You can always see exactly what it looked at and what it did.</div>
+            </div>
+            <div class="bucket">
+              <div class="bucket-head">{{ partial "icon.html" (dict "name" "check" "size" 17) }} Nothing happens behind your back</div>
+              <div class="bucket-item">Anything that sends, posts, or changes something waits for your OK first.</div>
+              <div class="bucket-item">Or keep an assistant "look, don't touch" — it can read and report, but never act.</div>
+            </div>
+          </div>
+          <p class="note">Helpful and hands-off, but never out of your hands.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAKE IT YOURS -->
+<section id="customize">
+  <div class="wrap">
+    <div class="eyebrow">Make it yours</div>
+    <h2>Every assistant bends to how you like to work.</h2>
+    <p class="lede">
+      Ward isn't one rigid layout. Change the whole look in a click — and shape what any
+      assistant shows you just by asking. No settings to hunt through, no code.
+    </p>
+
+    <div class="theme-try">
+      <div class="theme-try-head">
+        <strong>Try it on this page.</strong>
+        <span>These are Ward's actual themes, not swatches.</span>
+      </div>
+      <div class="theme-swatches" data-theme-picker></div>
+      <p class="theme-note">
+        Pick one and this whole page changes — same switch, same colors your assistants get.
+      </p>
+    </div>
+
+    <div class="custom-showcase">
+
+      <div class="custom-item">
+        <div class="app-window">
+          <div class="app-chrome">
+            <span class="chrome-dot"></span>
+            <span class="chrome-dot"></span>
+            <span class="chrome-dot"></span>
+          </div>
+          <img src="/images/ward-themes.png" width="3420" height="1868" alt="Ward's appearance settings showing a grid of eleven color-scheme themes — Ward default, Slate, Midnight, Dusk, Patina, Neon Tokyo, Ether, Canvas, Fog, Chalk, and Skylight." loading="lazy" />
+        </div>
+        <div class="custom-copy">
+          <h3>{{ partial "icon.html" (dict "name" "palette") }}Pick a look that fits you</h3>
+          <p>Eleven built-in themes — from Ward's default to Midnight, Dusk, Patina, Neon Tokyo, Canvas and more. Light or dark, calm or vivid; switch in a click and every assistant follows.</p>
+        </div>
+      </div>
+
+      <div class="custom-item custom-reverse">
+        <div class="app-window">
+          <div class="app-chrome">
+            <span class="chrome-dot"></span>
+            <span class="chrome-dot"></span>
+            <span class="chrome-dot"></span>
+          </div>
+          <img src="/images/ward-reshape.png" width="3420" height="1870" alt="A Ward assistant's dashboard with a scored-predictions table and a live prediction-score trend chart, next to a chat where the user asked for a trend chart and then said 'I want a chart, not a panel.'" loading="lazy" />
+        </div>
+        <div class="custom-copy">
+          <h3>{{ partial "icon.html" (dict "name" "chat") }}Reshape the dashboard by asking</h3>
+          <p>Prefer a chart to a table? Just say so. Here, "can we add a trend chart tracking your predictions?" became a live scoring chart — and "I want a chart, not a panel" reshaped it again. Each assistant builds the exact view you ask for.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="wrap">
+    <div class="eyebrow">Connect your world</div>
+    <h2>It plugs into the places your life already lives.</h2>
+    <p class="lede">
+      Connect an account once from Settings and your assistants can actually get things done in
+      it — read what's there, keep it tidy, and (with your OK) make changes. Nothing to install.
+      Ward is built around what you need done, not around one vendor's app.
+    </p>
+    <p class="lede lede-sub">
+      Connections use OAuth through the provider — Ward never sees your password — and tokens
+      are encrypted at rest. <a class="accent" href="/ward/security/">See exactly how we handle your data<span class="link-arrow"></span></a>
+    </p>
+    <div class="trust">
+      <div class="card">
+        <h3>{{ partial "icon.html" (dict "name" "brain") }}Your second brain</h3>
+        <p>The place you keep notes, trackers, and running logs. Ward keeps a page or database current — a digest, a reading list, a decision log — so you're not copying things across by hand.</p>
+        <span class="conn-live mono">Notion today</span>
+      </div>
+      <div class="card">
+        <h3>{{ partial "icon.html" (dict "name" "inbox") }}Your inbox</h3>
+        <p>Sort the noise, surface the threads that actually matter, and draft replies in your voice — nothing sends until you say so.</p>
+        <span class="conn-live mono">Gmail today</span>
+      </div>
+      <div class="card">
+        <h3>{{ partial "icon.html" (dict "name" "calendar") }}Your schedule</h3>
+        <p>See what's coming, get prepped for it before it starts, and put things on the books without opening a calendar app.</p>
+        <span class="conn-live mono">Google Calendar today</span>
+      </div>
+      <div class="card">
+        <h3>{{ partial "icon.html" (dict "name" "files") }}Your files</h3>
+        <p>Find the document, pull the details out of it, and file new ones where they belong instead of wherever they landed.</p>
+        <span class="conn-live mono">Google Drive today</span>
+      </div>
+      <div class="card">
+        <h3>{{ partial "icon.html" (dict "name" "globe") }}The open web</h3>
+        <p>No connection needed. Your assistants can research, watch a page, and pull in what's public — filtered so a hostile page can't reach anywhere it shouldn't.</p>
+        <span class="conn-live mono">Built in</span>
+      </div>
+      <div class="card">
+        <h3>{{ partial "icon.html" (dict "name" "link") }}Whatever's next</h3>
+        <p>New connections land regularly, and the list is shaped by what people ask for. Need one Ward doesn't have yet? Tell it — it'll ask us for you.</p>
+      </div>
+    </div>
+    <p class="note">
+      Whatever you connect, you decide what it can touch: keep an assistant read-only, or require
+      your approval before it changes anything. Your call, per assistant.
+    </p>
+  </div>
+</section>
+
+<!-- WHY WARD -->
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow">Why Ward</div>
+    <h2>Everything else still leaves the work to you.</h2>
+    <p class="lede">
+      There's no shortage of AI. What's rare is something that just handles things in the
+      background, gets more useful the longer you have it, and never turns into one more thing
+      to manage.
+    </p>
+
+    <div class="why-truth" style="margin-top:28px">
+      <p>The real difference is what happens over time: it remembers what it's already done, abilities one assistant gains can carry over to the others, and it builds on itself — without turning into one more thing to manage. That's the part the others don't have.</p>
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-vs-label">vs. reminder &amp; automation apps</div>
+        <div class="why-them">Do exactly what you set up. Forever. No more, no less.</div>
+        <div class="why-divider">↓</div>
+        <div class="why-ward-row">Understands what you meant, and gets better at it.</div>
+        <p class="why-body">Reminder apps and tools like IFTTT or Zapier follow the rule you built — and break the moment reality doesn't match it. A Ward assistant works from what you actually want, adapts as things change, and quietly picks up new abilities over time.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-vs-label">vs. a drawer full of apps</div>
+        <div class="why-them">A different app for every little thing — each with its own login and learning curve.</div>
+        <div class="why-divider">↓</div>
+        <div class="why-ward-row">One place, plain English, for all of it.</div>
+        <p class="why-body">Instead of ten single-purpose apps you have to check, it's one spot where you describe what you want and it's handled. Every assistant lives together, and they can all draw on the same connections you've set up.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-vs-label">vs. a chatbot</div>
+        <div class="why-them">Answers when you ask. Silent otherwise.</div>
+        <div class="why-divider">↓</div>
+        <div class="why-ward-row">Works in the background and shows up with the answer.</div>
+        <p class="why-body">ChatGPT and the like are great — but you have to remember to ask, every time. A Ward assistant just does its thing on its own and leaves the result waiting for you. No prompt, no open laptop.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h2>Try it free. Then pay for what you run.</h2>
+    <p class="lede">
+      Every plan starts with a 14-day free trial. You pick one for two reasons: how much you
+      want handled each day, and whether you want Max mode on tap. It's a daily budget of
+      assistant runs that all your assistants share — add more assistants and they split the
+      same budget. Chatting with Ward never spends runs; it has its own daily allowance, which
+      grows with the plan. Ward is in early access, so these are the plans at launch — request
+      access and we'll get you in.
+    </p>
+    <div class="pricing">
+      <div class="tier">
+        <div class="tier-name">Basic</div>
+        <div class="tier-price">$9<span>.99/mo</span></div>
+        <div class="tier-note">To get started</div>
+        <ul>
+          <li><strong>14-day free trial</strong></li>
+          <li>3 assistant runs a day</li>
+          <li>As many assistants as you like</li>
+          <li>Normal &amp; High modes</li>
+          <li>Every other feature included</li>
+        </ul>
+        {{ partial "trial-cta.html" (dict "plan" "Basic" "price" "$9.99/mo" "class" "btn-ghost tier-cta") }}
+      </div>
+
+      <div class="tier tier-featured">
+        <div class="tier-flag">Most popular</div>
+        <div class="tier-name">Plus</div>
+        <div class="tier-price">$19<span>.99/mo</span></div>
+        <div class="tier-note">For everyday use</div>
+        <ul>
+          <li><strong>14-day free trial</strong></li>
+          <li>9 assistant runs a day</li>
+          <li>As many assistants as you like</li>
+          <li><strong>Max mode</strong> for the hardest jobs</li>
+          <li>Every feature included</li>
+        </ul>
+        {{ partial "trial-cta.html" (dict "plan" "Plus" "price" "$19.99/mo" "class" "btn-primary tier-cta") }}
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">Pro</div>
+        <div class="tier-price">$29<span>.99/mo</span></div>
+        <div class="tier-note">When you want more running</div>
+        <ul>
+          <li><strong>14-day free trial</strong></li>
+          <li>15 assistant runs a day</li>
+          <li>As many assistants as you like</li>
+          <li><strong>Max mode</strong> for the hardest jobs</li>
+          <li>Every feature included</li>
+        </ul>
+        {{ partial "trial-cta.html" (dict "plan" "Pro" "price" "$29.99/mo" "class" "btn-ghost tier-cta") }}
+      </div>
+    </div>
+    <p class="fine fine-center">
+      <strong>The price on the plan is the price.</strong> Spend the day's budget and Ward
+      pauses until tomorrow — it never quietly runs up a bill you didn't agree to.
+    </p>
+    <p class="fine fine-center">
+      Ward is built for individuals right now. Running it for a team or building on it?
+      <a class="accent" href="#cta">Tell us what you need</a> — that's where we're headed next.
+    </p>
+
+    <h3 class="modes-title">Some jobs deserve a bigger brain.</h3>
+    <p class="lede lede-sub">
+      For work where the thinking matters more than the count — deep research, thorny analysis,
+      a first pass at something new — you can put a run on a more capable model. It draws more
+      from the same daily budget, so you're always trading breadth for depth on your terms.
+      Set it per assistant, or per run.
+    </p>
+    <div class="modes">
+      <div class="mode">
+        <div class="mode-head"><span class="mode-name">Normal</span><span class="mode-cost mono">1×</span></div>
+        <p>The default, and what nearly everything should use — monitors, trackers, digests, feed pollers.</p>
+      </div>
+      <div class="mode">
+        <div class="mode-head"><span class="mode-name">High</span><span class="mode-cost mono">3×</span></div>
+        <p>A stronger model for summarizing, classifying, and routine analysis.</p>
+      </div>
+      <div class="mode">
+        <div class="mode-head"><span class="mode-name">Max</span><span class="mode-cost mono">5×</span></div>
+        <p>The most capable model, for research synthesis and multi-step judgment.</p>
+      </div>
+    </div>
+    <p class="note">
+      Normal and High are on every plan. Max is on Plus and Pro — at 5 runs it wouldn't fit
+      inside Basic's day anyway, where a single High run already spends the whole budget.
+    </p>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="wrap">
+    <div class="eyebrow">Trust &amp; control</div>
+    <h2>Helpful, but never careless with your stuff.</h2>
+    <div class="trust">
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "hand") }}Nothing without your OK</h3><p>Anything that sends an email, posts, or changes something waits for you to approve it — or keep an assistant read-only, so it can look and report but never act.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "lock") }}Your accounts stay yours</h3><p>Connect the apps you choose, grant only what each assistant needs, and disconnect any time. We never train AI on your data.</p></div>
+      <div class="card"><h3>{{ partial "icon.html" (dict "name" "eye") }}Nothing hidden</h3><p>Every run is written down. You can see exactly what an assistant looked at and what it did, any time — and switch it off whenever you like.</p></div>
+    </div>
+    <p class="note note-center">
+      Want the technical details — encryption, workspace isolation, egress controls, and which AI models we use? <a class="accent" href="/ward/security/">Read the security overview<span class="link-arrow"></span></a>
+    </p>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="eyebrow">Where we are</div>
+    <h2>Working today, growing fast.</h2>
+    <div class="road">
+      <div class="phase now">
+        <span class="tag mono">Working today</span>
+        <ul>
+          <li>Create assistants just by chatting</li>
+          <li>They run on their own, on a schedule</li>
+          <li>Memory &amp; no-repeats built in</li>
+          <li>Connect Gmail, Google Calendar &amp; Drive, and Notion</li>
+          <li>Approve-before-acting &amp; read-only controls</li>
+          <li>A simple page for each assistant</li>
+          <li>Your own account, in the cloud</li>
+        </ul>
+      </div>
+      <div class="phase next">
+        <span class="tag mono">Coming soon</span>
+        <ul>
+          <li>Check in from your phone</li>
+          <li>Notifications when something needs you</li>
+          <li>More apps to connect</li>
+          <li>A library of ready-made assistants to start from</li>
+        </ul>
+      </div>
+      <div class="phase later">
+        <span class="tag mono">Down the road</span>
+        <ul>
+          <li>Share assistants with family or a team</li>
+          <li>Even more connections &amp; sources</li>
+          <li>Partner program for makers building on Ward</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO MAKES IT -->
+<section id="maker">
+  <div class="wrap">
+    <div class="eyebrow">Who makes Ward</div>
+    <h2>Built by Axiomat.</h2>
+    <p class="lede">
+      Ward is built by <a class="accent" href="/">Axiomat</a>, a software studio in Tampa Bay,
+      Florida, out of years spent building enterprise IT and security software for organizations
+      that operate worldwide. When you email about Ward, it reaches the person who builds it —
+      bug reports get fixed, and good ideas tend to ship rather than land in a backlog.
+    </p>
+    <div class="cta-row" style="justify-content:flex-start; margin-top:24px">
+      <a class="btn btn-ghost" href="/">About Axiomat<span class="link-arrow"></span></a>
+      <a class="btn btn-ghost" href="/ward/security/">Security &amp; data handling<span class="link-arrow"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="cta">
+  <div class="wrap">
+    <h2>Say it once. It keeps at it.</h2>
+    {{- if site.Params.appSignupURL }}
+    <p class="sub">Every plan starts with 14 days free. Pick one, point Ward at something you keep meaning to get to, and see what it builds.</p>
+    <div class="cta-row">
+      {{ partial "trial-cta.html" (dict "class" "btn-primary") }}
+      <a class="btn btn-ghost" href="#pricing">Compare plans</a>
+    </div>
+    {{- else }}
+    <p class="sub">We're opening early access to people who'd rather have AI quietly handle the little things than sit around waiting to be asked.</p>
+    {{ partial "signup-form.html" (dict "source" "ward-cta") }}
+    {{- end }}
+    <p class="note">
+      Or <a class="accent" href="#how">see how it works</a> first.
+    </p>
+  </div>
+</section>
+
+{{ end }}

@@ -1,21 +1,36 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{- $title := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) }}
+{{- with .Params.seoTitle }}{{ $title = . }}{{ end }}
+{{- $desc := or .Description site.Params.description }}
+{{- $ogImage := (.Params.image | default "/images/app-screenshot.png") | absURL }}
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+{{- if .Params.noindex }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}
 
-{{ $paginator := .Paginate (where .Site.RegularPages ".Params.post" "!=" false) }}
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Axiomat">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $ogImage }}">
 
-{{ if .IsHome }}
-		<meta name="description" content="{{ .Description }}" />
-{{ else }}
-	{{ if .Params.seoTitle }}
-		<title>{{ .Params.seoTitle }}</title>
-	{{ else }}
-		<title>{{ .Title }}</title>
-	{{ end }}
-	<meta name="description" content="{{ .Description }}" />
-{{ end}}
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}

@@ -1,8 +1,13 @@
-{{ partial "footer-menu.html" (dict "menuID" "footer" "page" .) }}
-<h2>Contact</h2>
-contact@axiomat.io<br />
-360 Central Avenue, Suite 800<br />
-St Petersburg, FL 33701<br />
-(727) 272-7272
-
-<p>Copyright {{ now.Year }}. All rights reserved.</p>
+<div class="wrap foot-inner">
+  <span>© {{ now.Year }} Axiomat</span>
+  <nav>
+    <ul>
+      <li><a class="muted" href="/">Axiomat</a></li>
+      <li><a class="muted" href="/ward/">Ward</a></li>
+      <li><a class="muted" href="/ward/security/">Security</a></li>
+      <li><a class="muted" href="/privacy/">Privacy</a></li>
+      <li><a class="muted" href="mailto:hello@axiomat.io?subject=Hello%20Axiomat">Contact</a></li>
+      <li><a class="muted" href="https://github.com/Axiomat-io">Code</a></li>
+    </ul>
+  </nav>
+</div>

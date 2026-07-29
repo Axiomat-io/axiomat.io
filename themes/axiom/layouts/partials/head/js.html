@@ -1,7 +1,9 @@
 {{- with resources.Get "js/main.js" }}
   {{- if eq hugo.Environment "development" }}
+    {{- /* Same cache-busting as css.html — see the note there. */ -}}
     {{- with . | js.Build }}
-      <script src="{{ .RelPermalink }}"></script>
+      {{- $v := (. | fingerprint "md5").Data.Integrity | replaceRE "^md5-" "" }}
+      <script src="{{ .RelPermalink }}?h={{ $v }}"></script>
     {{- end }}
   {{- else }}
     {{- $opts := dict "minify" true }}

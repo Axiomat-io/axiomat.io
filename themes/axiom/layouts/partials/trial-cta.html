@@ -1,0 +1,27 @@
+{{- /*
+  A "Start free trial" button.
+
+  Points at Ward's signup when site.Params.appSignupURL is set, carrying the plan so
+  the app can preselect it; otherwise falls back to the early-access form further down
+  the page. The label follows: promising a trial only makes sense once one can actually
+  be started, so while signup is gated the button says "Request access" instead.
+
+  Params:
+    plan  (string, optional) — "Basic" | "Plus" | "Pro". Omit for a general CTA.
+    price (string, optional) — shown in the form acknowledgment, e.g. "$19.99/mo".
+    class (string, optional) — extra classes, e.g. "btn-ghost tier-cta".
+    prefix (string, optional) — path prefix for the in-page anchor, e.g. "/ward/".
+*/ -}}
+{{- $signup := site.Params.appSignupURL -}}
+{{- $plan := .plan | default "" -}}
+{{- $class := .class | default "btn-primary" -}}
+{{- $href := printf "%s#cta" (.prefix | default "") -}}
+{{- $label := "Request access" -}}
+{{- with $signup }}
+  {{- $label = "Start free trial" -}}
+  {{- $href = . -}}
+  {{- with $plan }}{{ $href = printf "%s?plan=%s" $signup (lower .) }}{{ end -}}
+{{- end }}
+<a class="btn {{ $class }}" href="{{ $href }}"
+   {{- with $plan }} data-plan="{{ . }}"{{ end }}
+   {{- with $.price }} data-plan-price="{{ . }}"{{ end }}>{{ $label }}</a>
