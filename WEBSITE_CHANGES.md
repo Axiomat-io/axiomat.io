@@ -66,9 +66,12 @@ ask people to connect Gmail and Drive. Added `/ward/security/` to the main nav a
 
 Go-to-market is B2C now; B2B follows as usage bootstraps. Changes:
 
-- **New pricing structure**: Free (3 runs/day, $0) · Ward (9/day, $19.99) · Pro (15/day, $29.99).
-  Team and Enterprise tiers removed. Published tier, runs/day, and price only — the unit-cost and
-  margin columns from the source spreadsheet are internal and are **not** on the site.
+- **Pricing (current)**: Basic (4 runs/day, $9.99) · Plus (9/day, $19.99) · Pro (15/day, $29.99),
+  each with a 14-day free trial. Free, Team and Enterprise are gone. Published tier, runs/day and
+  price only — the unit-cost and margin columns from the source spreadsheet are internal and are
+  **not** on the site.
+  *(This line was stale — it documented the intermediate Free/Ward/Pro ladder after the site had
+  already shipped Basic/Plus/Pro. The design audit caught it.)*
 - **Run modes section added**: Standard 1× · High 3× · Max 5×, drawn from the same daily budget.
 - Removed the **Enterprise tier**, which promised SSO, security review, and private isolated setup
   while `/ward/security/` states SOC 2 and a DPA don't exist. It advertised infrastructure we don't
@@ -114,8 +117,9 @@ than in the rendered page:
    actually honor that split, because the Limited Use language commits you to it.
 4. Lawyer review before Google OAuth verification. Google reads this page against your scopes, and
    the Limited Use language must match real behavior.
-5. Consider self-hosting the Inter font to drop the Google Fonts disclosure entirely — one less
-   third party, one less paragraph. Ten-minute change in `partials/head.html`.
+5. Consider self-hosting IBM Plex to drop the Google Fonts disclosure entirely — one less third
+   party, one less paragraph. Ten-minute change in `partials/head.html`. (The site moved from Inter
+   to IBM Plex in the design-system pass, matching the app; the disclosure still applies.)
 6. **Terms of Service still don't exist** and are needed before charging anyone. This policy doesn't
    cover payment terms, acceptable use, or liability.
 
