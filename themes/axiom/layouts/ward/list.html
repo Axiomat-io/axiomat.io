@@ -11,7 +11,7 @@
       babysit. Describe it once, and it keeps at it in the background.
     </p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#cta">Get early access</a>
+      {{ partial "trial-cta.html" (dict "class" "btn-primary") }}
       <a class="btn btn-ghost" href="#how">See how it works</a>
     </div>
 
@@ -349,7 +349,7 @@
           <li>Normal &amp; High modes</li>
           <li>Every other feature included</li>
         </ul>
-        <a class="btn btn-ghost tier-cta" href="#cta" data-plan="Basic" data-plan-price="$9.99/mo">Request access</a>
+        {{ partial "trial-cta.html" (dict "plan" "Basic" "price" "$9.99/mo" "class" "btn-ghost tier-cta") }}
       </div>
 
       <div class="tier tier-featured">
@@ -364,7 +364,7 @@
           <li><strong>Max mode</strong> for the hardest jobs</li>
           <li>Every feature included</li>
         </ul>
-        <a class="btn btn-primary tier-cta" href="#cta" data-plan="Plus" data-plan-price="$19.99/mo">Request access</a>
+        {{ partial "trial-cta.html" (dict "plan" "Plus" "price" "$19.99/mo" "class" "btn-primary tier-cta") }}
       </div>
 
       <div class="tier">
@@ -378,7 +378,7 @@
           <li><strong>Max mode</strong> for the hardest jobs</li>
           <li>Every feature included</li>
         </ul>
-        <a class="btn btn-ghost tier-cta" href="#cta" data-plan="Pro" data-plan-price="$29.99/mo">Request access</a>
+        {{ partial "trial-cta.html" (dict "plan" "Pro" "price" "$29.99/mo" "class" "btn-ghost tier-cta") }}
       </div>
     </div>
     <p class="muted" style="font-size:12px; margin-top:18px; text-align:center">
@@ -495,8 +495,16 @@
 <section class="final" id="cta">
   <div class="wrap">
     <h2>Say it once. It keeps at it.</h2>
+    {{- if site.Params.appSignupURL }}
+    <p class="sub">Every plan starts with 14 days free. Pick one, point Ward at something you keep meaning to get to, and see what it builds.</p>
+    <div class="cta-row">
+      {{ partial "trial-cta.html" (dict "class" "btn-primary") }}
+      <a class="btn btn-ghost" href="#pricing">Compare plans</a>
+    </div>
+    {{- else }}
     <p class="sub">We're opening early access to people who'd rather have AI quietly handle the little things than sit around waiting to be asked.</p>
     {{ partial "signup-form.html" (dict "source" "ward-cta") }}
+    {{- end }}
     <p class="muted" style="font-size:13px; margin-top:24px">
       Or <a class="accent" href="#how">see how it works</a> first.
     </p>

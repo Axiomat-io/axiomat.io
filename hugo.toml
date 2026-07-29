@@ -20,5 +20,11 @@ description = "Axiomat builds software that does the work instead of handing it 
 formEndpoint = ""
 contactEmail = "hello@axiomat.io"
 
+# Where "Start free trial" sends people. Set this to Ward's signup URL once open
+# signup ships (Ward#263) and every trial CTA points straight at the app. While it's
+# empty the CTAs fall back to the early-access form on the page, so the button never
+# promises a trial the visitor can't actually start.
+appSignupURL = ""
+
 [params.meta]
 favicon = true

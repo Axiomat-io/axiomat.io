@@ -7,7 +7,7 @@
     <li><a class="muted" href="/ward/#uses">What it does</a></li>
     <li><a class="muted" href="/ward/#how">How it works</a></li>
     <li><a class="muted" href="/ward/#pricing">Pricing</a></li>
-    <li><a class="btn btn-primary" href="/ward/#cta">Get early access</a></li>
+    <li>{{ partial "trial-cta.html" (dict "class" "btn-primary" "prefix" "/ward/") }}</li>
   </ul>
 </div>
 {{ else }}
