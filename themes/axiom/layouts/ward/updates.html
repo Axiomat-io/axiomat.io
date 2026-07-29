@@ -8,7 +8,7 @@
       {{ .Description }}
     </p>
     {{ with .OutputFormats.Get "rss" }}
-      <p class="legal-dates mono"><a class="accent" href="{{ .RelPermalink }}">Subscribe via RSS →</a></p>
+      <p class="legal-dates mono"><a class="accent" href="{{ .RelPermalink }}">Subscribe via RSS<span class="link-arrow"></span></a></p>
     {{ end }}
   </div>
 </section>
@@ -26,7 +26,7 @@
             </div>
             <h2 class="update-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
             {{ with .Description }}<p class="update-sum">{{ . }}</p>{{ end }}
-            <a class="update-more accent" href="{{ .RelPermalink }}">Read it →</a>
+            <a class="update-more accent" href="{{ .RelPermalink }}">Read it<span class="link-arrow"></span></a>
           </article>
         {{ end }}
       </div>

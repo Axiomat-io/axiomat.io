@@ -1,16 +1,10 @@
 {{ define "main" }}
 
-<section style="border-top:none; padding-bottom:32px">
-  <div class="wrap">
-    <div class="eyebrow">Security &amp; data handling</div>
-    <h2>Built to be trusted with your accounts.</h2>
-    <p class="lede">
-      Ward can read your email, files, and calendar and act on your behalf — so how it handles
-      access and data matters. Here's exactly how it works today. Ward is in early access;
-      wherever something isn't in place yet, we say so plainly.
-    </p>
-  </div>
-</section>
+{{ partial "page-head.html" (dict
+  "eyebrow" "Security &amp; data handling"
+  "title"   "Built to be trusted with your accounts."
+  "lede"    "Ward can read your email, files, and calendar and act on your behalf — so how it handles access and data matters. Here's exactly how it works today. Ward is in early access; wherever something isn't in place yet, we say so plainly."
+) }}
 
 <section>
   <div class="wrap">

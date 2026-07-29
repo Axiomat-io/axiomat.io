@@ -1,0 +1,22 @@
+{{- /*
+  The one page header. Replaces four ad-hoc openings — .hero, .hero-company,
+  .legal-head, and a `<section style="border-top:none">` that opened on an <h2>
+  and left /ward/security/ and /ward/architecture/ with no H1 at all.
+
+  Params:
+    eyebrow (string)  small uppercase label above the title
+    title   (string)  the page H1
+    lede    (string)  optional standfirst
+    meta    (string)  optional mono line beneath (dates, RSS, etc.) — pass HTML
+    href    (string)  optional link for the eyebrow
+*/ -}}
+<section class="page-head section-flush">
+  <div class="wrap">
+    {{- with .eyebrow }}
+    <div class="eyebrow">{{ with $.href }}<a class="accent" href="{{ . }}">{{ $.eyebrow }}</a>{{ else }}{{ . }}{{ end }}</div>
+    {{- end }}
+    <h1 class="page-title">{{ .title }}</h1>
+    {{- with .lede }}<p class="lede">{{ . | safeHTML }}</p>{{ end }}
+    {{- with .meta }}<p class="page-meta mono">{{ . | safeHTML }}</p>{{ end }}
+  </div>
+</section>

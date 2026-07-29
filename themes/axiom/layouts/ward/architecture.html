@@ -1,17 +1,10 @@
 {{ define "main" }}
 
-<section style="border-top:none; padding-bottom:32px">
-  <div class="wrap">
-    <div class="eyebrow">System architecture</div>
-    <h2>How Ward is put together.</h2>
-    <p class="lede">
-      One Svelte client, one FastAPI app, one scheduler job, and a Postgres database with
-      row-level security scoping every table to a workspace. Everything else — the model,
-      the payment processor, the tools an agent can call — is an external service Ward
-      talks to, not something it owns.
-    </p>
-  </div>
-</section>
+{{ partial "page-head.html" (dict
+  "eyebrow" "System architecture"
+  "title"   "How Ward is put together."
+  "lede"    "One Svelte client, one FastAPI app, one scheduler job, and a Postgres database with row-level security scoping every table to a workspace. Everything else — the model, the payment processor, the tools an agent can call — is an external service Ward talks to, not something it owns."
+) }}
 
 <section style="padding-top:0">
   <div class="wrap">

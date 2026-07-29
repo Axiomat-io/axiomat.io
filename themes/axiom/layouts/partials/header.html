@@ -1,17 +1,27 @@
-{{ if eq .Section "ward" }}
+{{- /*
+  The brand block used to nest <a class="by"> inside <a class="brand">, which is
+  invalid — the parser unpicks it, so "by Axiomat" didn't reliably link where it
+  looked like it did. They're siblings now (audit 06).
+
+  Nav links carry aria-current="page" on the page they point at; before this
+  there was no current-page state anywhere on the site.
+*/ -}}
+{{- $p := .RelPermalink -}}
+{{- if eq .Section "ward" }}
 <div class="wrap nav-inner">
-  <a class="brand" href="/ward/">
-    {{ partial "ward-mark.html" . }} Ward <a class="by" href="/">by Axiomat</a>
-  </a>
+  <span class="brand-block">
+    <a class="brand" href="/ward/">{{ partial "ward-mark.html" . }} Ward</a>
+    <a class="by" href="/">by Axiomat</a>
+  </span>
   <ul class="nav-links">
     <li><a class="muted" href="/ward/#uses">What it does</a></li>
     <li><a class="muted" href="/ward/#how">How it works</a></li>
     <li><a class="muted" href="/ward/#pricing">Pricing</a></li>
-    <li><a class="muted" href="/ward/updates/">Updates</a></li>
+    <li><a class="muted" href="/ward/updates/" {{ if hasPrefix $p "/ward/updates/" }}aria-current="page"{{ end }}>Updates</a></li>
     <li>{{ partial "trial-cta.html" (dict "class" "btn-primary" "prefix" "/ward/") }}</li>
   </ul>
 </div>
-{{ else }}
+{{- else }}
 <div class="wrap nav-inner">
   <a class="brand" href="/">
     <img class="brand-mark" src="/images/axiomat-mark.png" alt="" aria-hidden="true"> Axiomat
@@ -19,8 +29,8 @@
   <ul class="nav-links">
     <li><a class="muted" href="/ward/">Ward</a></li>
     <li><a class="muted" href="/#about">Who's behind it</a></li>
-    <li><a class="muted" href="/ward/security/">Security</a></li>
+    <li><a class="muted" href="/ward/security/" {{ if eq $p "/ward/security/" }}aria-current="page"{{ end }}>Security</a></li>
     <li><a class="btn btn-primary" href="/#contact">Get in touch</a></li>
   </ul>
 </div>
-{{ end }}
+{{- end }}
