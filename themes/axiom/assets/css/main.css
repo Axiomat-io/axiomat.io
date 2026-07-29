@@ -449,6 +449,24 @@ h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); letter-spacin
 .prose blockquote p { margin: 0; color: var(--text); }
 .prose hr { border: 0; border-top: 1px solid var(--border); margin: 40px 0; }
 
+/* product updates */
+.updates { display: flex; flex-direction: column; }
+.update-item { padding: 28px 0; border-bottom: 1px solid var(--border); }
+.update-item:first-child { padding-top: 4px; }
+.update-item:last-child { border-bottom: none; }
+.update-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--muted); }
+.update-kind {
+  font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
+  color: var(--accent); padding: 2px 9px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.update-title { font-family: var(--serif); font-size: 24px; font-weight: 600; margin-top: 10px; max-width: 34ch; }
+.update-title a:hover { color: var(--accent); }
+.update-sum { color: var(--muted); font-size: 15px; margin-top: 10px; max-width: 68ch; line-height: 1.65; }
+.update-more { display: inline-block; font-size: 13px; margin-top: 12px; }
+.update-more:hover { text-decoration: underline; }
+
 /* early-access form */
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;

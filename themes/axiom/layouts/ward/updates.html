@@ -1,0 +1,50 @@
+{{ define "main" }}
+
+<section class="legal-head">
+  <div class="wrap">
+    <div class="eyebrow">Product updates</div>
+    <h1 class="legal-title">What's new in Ward.</h1>
+    <p class="lede">
+      {{ .Description }}
+    </p>
+    {{ with .OutputFormats.Get "rss" }}
+      <p class="legal-dates mono"><a class="accent" href="{{ .RelPermalink }}">Subscribe via RSS →</a></p>
+    {{ end }}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    {{ $posts := .Pages.ByDate.Reverse }}
+    {{ if $posts }}
+      <div class="updates">
+        {{ range $posts }}
+          <article class="update-item">
+            <div class="update-meta mono">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+              {{ with .Params.label }}<span class="update-kind update-kind-{{ . | urlize }}">{{ . }}</span>{{ end }}
+            </div>
+            <h2 class="update-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            {{ with .Description }}<p class="update-sum">{{ . }}</p>{{ end }}
+            <a class="update-more accent" href="{{ .RelPermalink }}">Read it →</a>
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="lede">Nothing published yet. Updates land here as they ship.</p>
+    {{ end }}
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Want these as they land?</h2>
+    <p class="sub">This page is the public record of what changed. Subscribe by RSS, or just check back.</p>
+    <div class="cta-row">
+      {{ partial "trial-cta.html" (dict "class" "btn-primary" "prefix" "/ward/") }}
+      <a class="btn btn-ghost" href="/ward/">Back to Ward</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}
