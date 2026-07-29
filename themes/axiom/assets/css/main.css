@@ -469,6 +469,15 @@ h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); letter-spacin
 .signup-btn { flex: 0 0 auto; padding: 12px 22px; font-size: 13px; }
 .signup-btn[disabled] { opacity: .6; cursor: default; }
 .signup-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+/* an explicit `display` beats the UA stylesheet's [hidden] rule, so restore it —
+   without this the empty pill renders on load before any plan is chosen */
+.signup-plan[hidden] { display: none; }
+.signup-plan {
+  font-size: 12px; color: var(--accent); margin-top: 12px;
+  padding: 6px 12px; border-radius: 999px; display: inline-block;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
 .signup-msg { font-size: 13px; margin-top: 12px; min-height: 1.2em; }
 .signup-msg.is-ok { color: var(--green); }
 .signup-msg.is-error { color: var(--danger); }

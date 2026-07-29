@@ -125,9 +125,31 @@
     });
   }
 
+  // Carry plan intent from the pricing CTAs into the early-access form. The site can't
+  // run Checkout — that lives behind auth in the app — so the useful thing a pricing
+  // button can do is record which plan someone came for.
+  function initPlanIntent() {
+    var field = document.querySelector('[data-signup-plan]');
+    var note = document.querySelector('[data-signup-plan-note]');
+    if (!field) return;
+
+    document.querySelectorAll('[data-plan]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var plan = btn.getAttribute('data-plan');
+        var price = btn.getAttribute('data-plan-price') || '';
+        field.value = plan;
+        if (note) {
+          note.textContent = 'Asking about ' + plan + (price ? ' — ' + price : '') + '.';
+          note.hidden = false;
+        }
+      });
+    });
+  }
+
   function boot() {
     initThemePicker();
     initChatDemo();
+    initPlanIntent();
   }
 
   if (document.readyState === 'loading') {

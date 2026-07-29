@@ -30,8 +30,12 @@
     maxlength="200"
     placeholder="Optional: what would you point Ward at?">
   <input type="hidden" name="source" value="{{ $source }}">
+  {{/* Set by the pricing CTAs so we learn which plan someone came for. Empty when the
+       request came from a general CTA — that's a signal too. */}}
+  <input type="hidden" name="plan" value="" data-signup-plan>
   {{/* Honeypot — bots fill it, humans never see it. */}}
   <input class="signup-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <p class="signup-plan" data-signup-plan-note hidden></p>
   <p class="signup-msg" data-signup-msg role="status" aria-live="polite"></p>
   <p class="signup-fine">No spam, no sharing your address. Or just email us at
     <a class="accent" href="mailto:{{ $email }}?subject=Ward%20early%20access">{{ $email }}</a>.</p>
