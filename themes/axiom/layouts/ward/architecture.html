@@ -1,0 +1,240 @@
+{{ define "main" }}
+
+<section style="border-top:none; padding-bottom:32px">
+  <div class="wrap">
+    <div class="eyebrow">System architecture</div>
+    <h2>How Ward is put together.</h2>
+    <p class="lede">
+      One Svelte client, one FastAPI app, one scheduler job, and a Postgres database with
+      row-level security scoping every table to a workspace. Everything else — the model,
+      the payment processor, the tools an agent can call — is an external service Ward
+      talks to, not something it owns.
+    </p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="diagram-frame" id="arch-diagram-frame">
+      <div class="diagram-zoom-controls">
+        <button type="button" id="arch-zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" id="arch-zoom-out" aria-label="Zoom out">&minus;</button>
+        <button type="button" id="arch-zoom-reset" aria-label="Reset zoom">Reset</button>
+      </div>
+      <pre class="mermaid">
+flowchart TB
+    accTitle: Ward system architecture
+    accDescr: How the Svelte client, FastAPI backend, scheduler job, Postgres database, blob storage, Azure OpenAI, Stripe, Auth0, and user-connected MCP servers fit together, including which calls are synchronous, which is shared code in a separate process, and where secrets and OAuth tokens live.
+
+    subgraph Client["Client"]
+        UI["Svelte SPA
+Chat / Overview / Activity panels"]
+    end
+
+    subgraph WardApp["ward — Azure Container App"]
+        API["FastAPI server
+server.py"]
+        Agent["Agent Runtime
+agent.py · dynamic.py
+tool loop + power levels"]
+        Meter["Metering &amp; Billing
+metering.py · tiers.py · billing.py"]
+        MCPMgr["MCP Manager
+mcp.py · mcp_oauth.py"]
+        Policy["Policy / Audit / Provenance
+policy.py · audit.py · provenance.py"]
+        Notif["Notifications &amp; Webhooks
+notifications.py · webhooks.py"]
+        AuthMod["Auth
+auth.py — validates JWTs only"]
+    end
+
+    subgraph SchedulerJob["ward-scheduler — Container App Job"]
+        Sched["main.py --tick
+scheduling.py
+runs its own copy of agent.py"]
+    end
+
+    subgraph DataRow["Data"]
+        direction LR
+        DB[("ward-pg — Postgres, RLS per workspace
+workspaces · agent_definitions · run_history
+chat_messages · mcp_oauth (encrypted 3rd-party tokens) · eval_* ...")]
+        Blob[("Azure Blob Storage
+agent artifacts")]
+    end
+
+    subgraph AIFoundry["Azure OpenAI — AI Foundry"]
+        Luna["gpt-5.6-luna — Normal"]
+        Terra["gpt-5.6-terra — High"]
+        Sol["gpt-5.6-sol — Max"]
+    end
+
+    Stripe["Stripe
+Checkout + billing webhooks"]
+    Auth0["Auth0
+hosted SPA login"]
+    UserMCP["User-connected MCP servers
+Slack · Gmail · GitHub · Notion ..."]
+
+    UI -->|HTTPS| API
+    API --> Agent
+    API --> Meter
+    API --> AuthMod
+    Agent --> MCPMgr
+    Agent --> Policy
+    Agent --> Notif
+    Agent -->|SQL| DB
+    Agent -->|HTTPS inference call| AIFoundry
+    Agent -->|write| Blob
+    MCPMgr -->|MCP protocol| UserMCP
+    MCPMgr -->|read/write tokens, SQL| DB
+    Meter -->|SQL| DB
+    Meter -->|HTTPS API| Stripe
+    Stripe -->|webhook · public ingress| API
+    AuthMod -->|validate JWT| Auth0
+    Auth0 -->|hosted login redirect| UI
+    Sched -.->|same code agent.py, separate process| Agent
+    Sched -->|SQL| DB
+
+    classDef accent fill:#0e97a8,stroke:#16b8c0,color:#0c0d10,font-weight:600;
+    class Agent accent;
+      </pre>
+      <p class="diagram-caption">
+        v2 · updated 2026-07-28 · reflects <span class="mono">backend/ward/</span> ·
+        solid = synchronous call · dotted = shared code, separate process · cylinder = data store
+      </p>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    flowchart: { htmlLabels: false },
+    themeVariables: {
+      background: '#14161b',
+      primaryColor: '#14161b',
+      primaryTextColor: '#e6e8ec',
+      primaryBorderColor: '#262a32',
+      lineColor: '#8b9099',
+      secondaryColor: '#191c22',
+      tertiaryColor: '#191c22',
+      clusterBkg: '#191c22',
+      clusterBorder: '#262a32',
+      fontFamily: 'SFMono-Regular, ui-monospace, "Cascadia Code", "Fira Code", Menlo, monospace',
+      fontSize: '14px',
+    },
+  });
+  mermaid.run({ querySelector: '.mermaid' }).then(function () {
+    var svg = document.querySelector('#arch-diagram-frame svg');
+    if (!svg) return;
+    svg.style.maxWidth = 'none';
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+
+    var loader = document.createElement('script');
+    loader.src = 'https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js';
+    loader.onload = function () {
+      var panZoom = svgPanZoom(svg, {
+        zoomEnabled: true,
+        panEnabled: true,
+        controlIconsEnabled: false,
+        fit: true,
+        center: true,
+        minZoom: 0.5,
+        maxZoom: 8,
+        zoomScaleSensitivity: 0.4,
+      });
+      panZoom.fit();
+      panZoom.center();
+      document.getElementById('arch-zoom-in').addEventListener('click', function () { panZoom.zoomIn(); });
+      document.getElementById('arch-zoom-out').addEventListener('click', function () { panZoom.zoomOut(); });
+      document.getElementById('arch-zoom-reset').addEventListener('click', function () { panZoom.resetZoom(); panZoom.fit(); panZoom.center(); });
+    };
+    document.head.appendChild(loader);
+  });
+</script>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">ward — Azure Container App</div>
+    <h2>Seven modules, one FastAPI process.</h2>
+    <div class="grid grid-3">
+      <div class="card"><h3>🌐 <span class="mono">server.py</span></h3><p>The HTTP surface — agent CRUD, chat, run triggers, billing endpoints, admin.</p></div>
+      <div class="card"><h3>🧠 Agent Runtime</h3><p><span class="mono">agent.py</span>, <span class="mono">dynamic.py</span> — runs the tool loop against Azure OpenAI, resolves an agent's power level to a backing model at build time.</p></div>
+      <div class="card"><h3>💳 Metering &amp; Billing</h3><p><span class="mono">metering.py</span>, <span class="mono">tiers.py</span>, <span class="mono">billing.py</span> — weighted daily run quota per workspace, Stripe Checkout + webhook sync to tier.</p></div>
+      <div class="card"><h3>🔌 MCP Manager</h3><p><span class="mono">mcp.py</span>, <span class="mono">mcp_oauth.py</span> — discovers, authorizes, and calls user-connected MCP servers. No first-party integrations.</p></div>
+      <div class="card"><h3>🛡️ Policy / Audit / Provenance</h3><p><span class="mono">policy.py</span>, <span class="mono">audit.py</span>, <span class="mono">provenance.py</span> — deny lists, approval gates, run-level audit trail, source attribution on retrieved data.</p></div>
+      <div class="card"><h3>🔔 Notifications &amp; Webhooks</h3><p><span class="mono">notifications.py</span>, <span class="mono">webhooks.py</span> — outbound alerts and inbound triggers for agent runs.</p></div>
+      <div class="card"><h3>🪪 Auth</h3><p><span class="mono">auth.py</span> — session handling in front of Auth0's hosted login.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Scheduled execution</div>
+    <h2>Cron runs its own copy of the code — not a call into the API.</h2>
+    <p class="lede">
+      <span class="mono">ward-scheduler</span> is a distinct Azure Container App Job. On each
+      tick, <span class="mono">main.py --tick</span> reads due agents straight from
+      Postgres and imports <span class="mono">agent.py</span>/<span class="mono">dynamic.py</span>
+      directly in its own process — the same code path the API uses for "Run Now,"
+      but a separate process, not a network call into the running API container.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Data &amp; storage</div>
+    <h2>Isolation enforced by the database, not app code.</h2>
+    <div class="grid grid-2">
+      <div class="card"><h3>🗄️ <span class="mono">ward-pg</span></h3><p>Azure Postgres Flexible Server. Every table carries row-level security keyed to <span class="mono">workspace_id</span> — no query can read across workspaces, even by mistake. This is also where the highest-sensitivity data lives: <span class="mono">mcp_oauth</span> stores encrypted third-party OAuth tokens for every MCP server a user connects.</p></div>
+      <div class="card"><h3>📦 Artifact storage</h3><p>Azure Blob (or local filesystem in dev) behind a pluggable <span class="mono">ArtifactStore</span> — agent-produced files, chat attachments.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">External services</div>
+    <h2>The model, the processor, the integrations — all outside the app.</h2>
+    <div class="grid grid-2">
+      <div class="card"><h3>🤖 Azure OpenAI — AI Foundry</h3><p>Three deployments back the three power levels: <span class="mono">gpt-5.6-luna</span> (Normal), <span class="mono">gpt-5.6-terra</span> (High), <span class="mono">gpt-5.6-sol</span> (Max) — swappable per-catalog, never hardcoded on an agent.</p></div>
+      <div class="card"><h3>💳 Stripe</h3><p>Checkout for self-serve upgrades; signature-verified webhooks sync subscription state back to a workspace's tier.</p></div>
+      <div class="card"><h3>🔑 Auth0</h3><p>Hosted SPA login — Ward never stores a password.</p></div>
+      <div class="card"><h3>🧩 User-connected MCP servers</h3><p>Slack, Gmail, GitHub, Notion, and anything else a user adds — the integration surface is MCP, not a Ward-built connector.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Being straight with you</div>
+    <h2>What this diagram doesn't show yet.</h2>
+    <p class="lede">This is a snapshot of what's actually deployed today, not an aspirational one — so here's what's deliberately left off, and why:</p>
+    <div class="grid grid-2">
+      <div class="card"><h3>🔓 No Key Vault</h3><p>Secrets (Stripe, Auth0, Azure OpenAI, the DB connection string) are Azure Container App secrets, injected as env vars — not Key Vault + managed identity.</p></div>
+      <div class="card"><h3>🌐 No VNet / private endpoint</h3><p><span class="mono">ward-pg</span> is reachable over its public endpoint, gated by an IP allowlist — not a private network path.</p></div>
+      <div class="card"><h3>📈 No dedicated observability</h3><p>Tracing hooks exist in the code (<span class="mono">tracing.py</span>) but no APM/exporter is wired up yet — logs land in the Container App environment's default Log Analytics workspace.</p></div>
+      <div class="card"><h3>📦 Shared container registry</h3><p><span class="mono">axiomatioacr</span> also serves other Axiomat projects — it isn't Ward-dedicated infrastructure.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Questions about how this is built?</h2>
+    <p class="sub">Happy to go deeper on any piece of it.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:hello@axiomat.io?subject=Ward%20architecture">Email us</a>
+      <a class="btn btn-ghost" href="/ward/">Back to Ward</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}
