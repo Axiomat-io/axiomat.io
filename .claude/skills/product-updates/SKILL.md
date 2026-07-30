@@ -57,6 +57,48 @@ whose only honest description is "we tidied something up".
   plus a short roundup usually reads better than one lumpy post.
 - **Silence.** "Nothing customer-facing shipped this week" is a legitimate outcome.
 
+## 2b. What a customer is allowed to see
+
+The reader is a **customer, not a colleague**. Be informative about what changed for
+them; do not open the hood. Default to leaving internals out — include them only when
+the update is genuinely unintelligible or untrustworthy without them.
+
+**Never:**
+
+- File, function, table, class or module names. `metering.py`, `tiers.py`,
+  `workspaces.tier`, `DynamicAgent.run()` — none of it. A customer cannot act on any of
+  it, and it reads as showing off.
+- Framework and vendor plumbing: FastAPI, Svelte, Postgres, row-level security, Stripe
+  webhooks, Auth0, Azure Container Apps, MCP transports.
+- PR or issue numbers, branch names, commit hashes, sprint or milestone language.
+- **Business internals.** Unit costs, margins, COGS, conversion rates, CAC, runway,
+  pricing rationale, what a plan costs us to serve, how many customers there are. When a
+  price or limit changes, say what it is now and what it means for them. Do not explain
+  the economics — that is an internal document's job, and volunteering it invites an
+  argument you can't win in a changelog.
+- Anything about how many people work here, or what we plan to build next unless it's
+  already announced.
+- The *shape* of a bug's cause when the effect is enough. "Scheduled assistants stopped
+  waiting for approval they didn't need" beats a tour of the classification logic.
+
+**The narrow exception:** security and privacy claims sometimes need a specific
+mechanism to be worth believing. "Your accounts connect over OAuth, so Ward never sees
+your password" is worth more than "connections are secure", and it's a fact the customer
+can verify and act on. Name a mechanism when it *earns trust or enables a decision* —
+never to show how the sausage is made.
+
+**A test that works:** for each sentence, ask *what can the reader do differently
+because they know this?* If the answer is nothing, cut it.
+
+Concretely:
+
+| Don't write | Write |
+|---|---|
+| "`audit.is_write_action` classified unknown tools by verb tokens and defaulted to write" | "Scheduled assistants could stall waiting for approval on work that only reads" |
+| "We removed the free tier because it only breaks even at ~35% conversion" | "Every plan starts with a 14-day free trial" |
+| "Notifications are dispatched through a notifier abstraction with per-transport gating" | "Ward can email you when a run fails — per-event, and you choose which" |
+| "Postgres row-level security scopes every table to a workspace" | "Your workspace's data is isolated from every other workspace" |
+
 ## 3. Write it
 
 House voice, matching the rest of the site:
