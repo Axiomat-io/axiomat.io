@@ -1,10 +1,10 @@
 {{- /*
-  A "Start free trial" button.
+  A "Try it" button.
 
-  Points at Ward's signup when site.Params.appSignupURL is set, carrying the plan so
-  the app can preselect it; otherwise falls back to the early-access form further down
-  the page. The label follows: promising a trial only makes sense once one can actually
-  be started, so while signup is gated the button says "Request access" instead.
+  Points at Ward when site.Params.appSignupURL is set, carrying the plan so the app can
+  preselect it; otherwise falls back to the early-access form further down the page. The
+  label follows: sending someone to the app only makes sense once there's an app to send
+  them to, so while signup is gated the button says "Request access" instead.
 
   Params:
     plan  (string, optional) — "Basic" | "Plus" | "Pro". Omit for a general CTA.
@@ -18,7 +18,7 @@
 {{- $href := printf "%s#cta" (.prefix | default "") -}}
 {{- $label := "Request access" -}}
 {{- with $signup }}
-  {{- $label = "Start free trial" -}}
+  {{- $label = "Try it" -}}
   {{- $href = . -}}
   {{- with $plan }}{{ $href = printf "%s?plan=%s" $signup (lower .) }}{{ end -}}
 {{- end }}
