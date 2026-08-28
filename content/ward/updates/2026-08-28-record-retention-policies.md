@@ -10,6 +10,8 @@ An assistant that's been running for a while accumulates records — leads it tr
 
 There's now a place to configure that yourself: a **Data & Retention** section in workspace settings. Set a default number of days records should stick around before archiving, and override that window for specific collections that should age out faster or slower than the rest.
 
+One thing worth knowing before you turn it on: the default window is pre-filled at **30 days**. If you enable retention without changing that number, anything already older than 30 days gets archived on the next sweep — check it first if that's not what you want.
+
 A couple of things hold no matter how you configure it:
 
 - **Archived means archived, not deleted.** The record stops showing up in an assistant's everyday views, but the full history is still there.
