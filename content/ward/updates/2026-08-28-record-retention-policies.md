@@ -3,11 +3,19 @@ title = 'Old records can now age out on their own'
 date = 2026-08-28
 label = 'Feature'
 layout = 'update'
-description = "Workspaces can have a data-retention policy — old records archive automatically instead of piling up, and anything still open is never touched."
+description = "A new Data & Retention section in workspace settings lets old records archive automatically instead of piling up, and anything still open is never touched."
 +++
 
 An assistant that's been running for a while accumulates records — leads it tracked, predictions it scored, items it triaged. Left alone, an older assistant's default views fill up with things nobody needs to see anymore.
 
-Ward workspaces can now have a retention policy for that: a way to say how long different kinds of records should stick around before they're archived. Archived means archived, not deleted — the record stops showing up in an assistant's everyday views, but the full history is still there. And it never touches anything still open: a retention policy quiets old noise, it doesn't hide work still being tracked.
+There's now a place to configure that yourself: a **Data & Retention** section in workspace settings. Set a default number of days records should stick around before archiving, and override that window for specific collections that should age out faster or slower than the rest.
 
-Right now, this is available at the API level rather than something you can configure yourself from inside the app. If you'd like a retention policy set up for your workspace, reach out and we'll get it configured.
+A couple of things hold no matter how you configure it:
+
+- **Archived means archived, not deleted.** The record stops showing up in an assistant's everyday views, but the full history is still there.
+- **Open records are never archived**, regardless of age or settings. A retention policy quiets old noise — it doesn't hide work still being tracked. You can also exempt specific collections or statuses outright.
+
+Nothing changes until you set a policy — every workspace starts with none, and clearing it turns retention back off entirely.
+
+<!-- SCREENSHOT: the Data & Retention section in workspace settings — the default-days
+     field alongside the per-collection override rows -->
