@@ -1,0 +1,89 @@
+{{- /*
+  A decorative background for a carousel panel, drawn in the same hand as the
+  wordmark and ward-mark.html — open "cutout" ring nodes (stroke only, filled
+  with --bg like a punch-through) joined by thin straight or right-angled
+  traces. Three variants, so neighboring panels don't repeat the same shape.
+
+  Usage: {{ partial "bg-pattern.html" (dict "variant" 1) }}
+  variant: 1 (constellation), 2 (circuit), 3 (echo of the Ward mark's line art —
+  keep this one on panels that are actually about Ward, e.g. "work")
+*/ -}}
+{{- $variant := .variant | default 1 -}}
+<div class="bg-pattern" aria-hidden="true">
+
+{{- if eq $variant 1 }}
+  <svg class="bg-pattern-svg" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <path d="M80,80 L220,160 L140,260"/>
+      <path d="M220,160 L340,90"/>
+      <path d="M980,120 L1120,220 L1040,340"/>
+      <path d="M980,120 L860,60"/>
+      <path d="M60,480 L200,560"/>
+      <path d="M1100,520 L960,600"/>
+      <path d="M960,600 L840,540"/>
+    </g>
+    <g fill="var(--bg)" stroke="currentColor" stroke-width="1.5">
+      <circle cx="80" cy="80" r="5"/>
+      <circle cx="220" cy="160" r="4"/>
+      <circle cx="140" cy="260" r="6"/>
+      <circle cx="340" cy="90" r="4"/>
+      <circle cx="980" cy="120" r="5"/>
+      <circle cx="1120" cy="220" r="4"/>
+      <circle cx="1040" cy="340" r="6"/>
+      <circle cx="860" cy="60" r="4"/>
+      <circle cx="60" cy="480" r="5"/>
+      <circle cx="200" cy="560" r="4"/>
+      <circle cx="1100" cy="520" r="5"/>
+      <circle cx="960" cy="600" r="4"/>
+      <circle cx="840" cy="540" r="4"/>
+    </g>
+  </svg>
+{{- else if eq $variant 2 }}
+  <svg class="bg-pattern-svg" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60,60 L60,180 L160,180 L160,240"/>
+      <path d="M160,180 L260,180"/>
+      <path d="M1140,80 L1040,80 L1040,200 L960,200"/>
+      <path d="M1040,200 L1040,300"/>
+      <path d="M80,560 L80,460 L200,460"/>
+      <path d="M200,460 L200,400 L300,400"/>
+      <path d="M1160,540 L1080,540 L1080,440"/>
+      <path d="M1080,440 L980,440"/>
+    </g>
+    <g fill="var(--bg)" stroke="currentColor" stroke-width="1.5">
+      <circle cx="60" cy="60" r="5"/>
+      <circle cx="160" cy="240" r="4"/>
+      <circle cx="260" cy="180" r="4"/>
+      <circle cx="1140" cy="80" r="5"/>
+      <circle cx="960" cy="200" r="4"/>
+      <circle cx="1040" cy="300" r="4"/>
+      <circle cx="80" cy="560" r="5"/>
+      <circle cx="300" cy="400" r="4"/>
+      <circle cx="1160" cy="540" r="5"/>
+      <circle cx="980" cy="440" r="4"/>
+    </g>
+  </svg>
+{{- else }}
+  <svg class="bg-pattern-svg" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(40,40) scale(2.6)">
+      <path d="M6 40 H12 L18 35"/>
+      <path d="M11 14 L18 35 L24 23 L30 35 L37 14"/>
+    </g>
+    <g fill="var(--bg)" stroke="currentColor" stroke-width="2" transform="translate(40,40) scale(2.6)">
+      <circle cx="6" cy="40" r="3.3"/>
+      <circle cx="11" cy="14" r="3.4"/>
+      <circle cx="37" cy="14" r="3.4"/>
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(1000,340) scale(1.6) rotate(180 24 24)">
+      <path d="M6 40 H12 L18 35"/>
+      <path d="M11 14 L18 35 L24 23 L30 35 L37 14"/>
+    </g>
+    <g fill="var(--bg)" stroke="currentColor" stroke-width="1.5" transform="translate(1000,340) scale(1.6) rotate(180 24 24)">
+      <circle cx="6" cy="40" r="3.3"/>
+      <circle cx="11" cy="14" r="3.4"/>
+      <circle cx="37" cy="14" r="3.4"/>
+    </g>
+  </svg>
+{{- end }}
+
+</div>

@@ -1,9 +1,9 @@
 baseURL = 'https://axiomat.io/'
 languageCode = 'en-us'
-title = 'Axiomat — High-value software, low-friction experiences'
+title = 'Axiomat — Applied AI consulting, run by Andrew Meyer'
 theme = "axiom"
 enableRobotsTXT = true
-description = "Axiomat builds software that does the work instead of handing it to you — starting with Ward, its first product."
+description = "Axiomat is Andrew Meyer's applied AI consulting practice — evals, agentic workflows, and LLM adoption for enterprise product teams, backed by 10+ years building enterprise and security software."
 
 # The theme ships demo content (posts, tags, categories). We don't use it, and
 # taxonomy term pages would otherwise land in the sitemap as empty branded pages.
@@ -12,13 +12,18 @@ disableKinds = ['taxonomy', 'term']
 [taxonomies]
 
 [params]
-description = "Axiomat builds software that does the work instead of handing it to you — starting with Ward, its first product."
+description = "Axiomat is Andrew Meyer's applied AI consulting practice — evals, agentic workflows, and LLM adoption for enterprise product teams, backed by 10+ years building enterprise and security software."
 
 # Endpoint the early-access form POSTs JSON to (Formspree, Formspark, a
 # serverless function — anything that accepts {email, use_case, source}).
 # While this is empty the form is hidden and CTAs fall back to email links.
 formEndpoint = ""
 contactEmail = "hello@axiomat.io"
+
+# Where a consulting inquiry's "Book a call" CTA sends people. While empty,
+# CTAs fall back to the mailto link so the button never promises a booking
+# flow that isn't wired up yet.
+calendarURL = "https://calendar.app.google/JsFD6qn1EgQZt7ie8"
 
 # Where "Try it" sends people. When set, every trial CTA points straight at the app.
 # While it's empty the CTAs fall back to the early-access form on the page, so the

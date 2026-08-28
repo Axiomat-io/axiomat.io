@@ -117,7 +117,7 @@ body::before {
 .by { color: var(--muted); font-weight: 400; font-size: var(--text-label); }
 .by:hover { color: var(--text); }
 /* current-page state — previously the nav had none anywhere */
-.nav-links a[aria-current="page"] { color: var(--text); }
+.nav-links a[aria-current="page"], .nav-links a.active { color: var(--text); }
 .nav-links { display: flex; gap: 26px; align-items: center; font-size: 13px; list-style: none; }
 .nav-links a.muted:hover { color: var(--text); }
 .btn {
@@ -520,6 +520,7 @@ h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); letter-spacin
    never recolour with a literal). Accent inside headings, where they replaced
    the emoji that used to carry the colour. */
 .icon { flex-shrink: 0; display: inline-block; vertical-align: -0.15em; }
+.card h3 .ward-mark { width: 20px; height: 20px; flex-shrink: 0; vertical-align: -0.15em; }
 .card h3 .icon,
 .bucket-head .icon,
 .custom-copy h3 .icon,
@@ -576,6 +577,84 @@ h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); letter-spacin
 .signup-msg.is-ok { color: var(--green); }
 .signup-msg.is-error { color: var(--danger); }
 .signup-fine { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+/* homepage carousel — a distinct, full-viewport experience for the pitch;
+   every other page keeps the normal scrolling layout. */
+body.home-carousel { height: 100vh; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+body.home-carousel .ax-main { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+
+.carousel-viewport { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+.panel {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  padding: 24px min(7vw, 90px); overflow-y: auto;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .3s;
+}
+.panel-inner { max-width: 1080px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+.bg-pattern { position: absolute; inset: 0; z-index: 0; color: var(--accent); opacity: .4; overflow: hidden; }
+.bg-pattern-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.panel .eyebrow { margin-bottom: 24px; }
+.panel h1 { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.4; font-weight: 600; letter-spacing: -.005em; max-width: 30ch; }
+.panel .lede { margin-top: 14px; }
+.panel-quote { border-left: 2px solid var(--border2); padding: 2px 0 2px 18px; margin-top: 18px; }
+.panel-quote p { font-size: 13.5px; font-style: italic; line-height: 1.55; color: var(--text); }
+.panel-quote cite { font-family: var(--mono); font-size: 10.5px; color: var(--muted); font-style: normal; display: block; margin-top: 6px; }
+.panel-photo { width: 100%; border-radius: 8px; display: block; filter: grayscale(.35) contrast(1.05) saturate(.85); }
+.panel-photo-caption { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.panel-achievements { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+.panel-achievements div { font-size: 14px; color: var(--muted); }
+.panel-achievements strong { color: var(--text); }
+.panel-teaser { border-left: 2px solid var(--border2); padding: 2px 0 2px 24px; }
+.panel-teaser p { font-size: 15px; font-style: italic; line-height: 1.6; }
+.panel[aria-hidden="true"] { pointer-events: none; }
+.panel-bg-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; }
+@media (max-width: 820px) { .panel-bg-grid { grid-template-columns: 1fr; } }
+.card-expand { cursor: pointer; }
+.card-toggle {
+  display: block; width: 100%; background: none; border: 0; padding: 0; margin: 0;
+  font: inherit; color: inherit; text-align: left; cursor: pointer;
+}
+.card-toggle h3 { justify-content: space-between; }
+.card-chevron { color: var(--muted); transition: transform .25s ease; flex-shrink: 0; }
+.card-expand.is-open .card-chevron { transform: rotate(180deg); color: var(--accent); }
+.card-detail {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows .3s ease;
+}
+.card-detail-inner { overflow: hidden; }
+.card-expand.is-open .card-detail { grid-template-rows: 1fr; margin-top: 14px; }
+.card-detail ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.card-detail li {
+  font-size: 13.5px; line-height: 1.6; color: var(--muted);
+  padding-left: 14px; position: relative;
+}
+.card-detail li::before {
+  content: ""; position: absolute; left: 0; top: 8px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+}
+.stat-chip {
+  font-family: var(--mono); font-size: 13px; color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 4px; padding: 1px 6px; white-space: nowrap; display: inline-block;
+}
+
+.carousel-foot {
+  flex-shrink: 0; border-top: 1px solid var(--border); height: 52px;
+  display: flex; align-items: center; justify-content: center; gap: 22px;
+}
+.carousel-arrow {
+  background: none; border: 1px solid var(--border); color: var(--muted);
+  width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 14px;
+  transition: border-color .15s, color .15s;
+}
+.carousel-arrow:hover:not(:disabled) { border-color: var(--border2); color: var(--text); }
+.carousel-arrow:disabled { opacity: .4; cursor: default; }
+.carousel-dots { display: flex; gap: 8px; }
+.carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border2); border: 0; cursor: pointer; padding: 0; }
+.carousel-dot[aria-current="true"] { background: var(--accent); }
+@media (max-width: 720px) {
+  .panel { padding: 20px 24px; }
+}
 
 /* footer */
 .ax-footer { border-top: 1px solid var(--border); padding: 30px 0; }
