@@ -1,80 +1,173 @@
 {{ define "main" }}
 
-<header class="hero hero-company">
-  <div class="wrap">
-    <span class="pill">Independent software studio · Tampa Bay, FL</span>
-    <h1>High-value software.<br><span class="grad">Low-friction experiences.</span></h1>
-    <p class="sub">
-      Axiomat builds software that does the work instead of handing it to you. The first
-      product is Ward: describe what you want handled, and it builds an agent that does it —
-      on its own, on a schedule.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="/ward/">Meet Ward<span class="link-arrow"></span></a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
-    </div>
-  </div>
-</header>
+{{- $cal := site.Params.calendarURL -}}
+{{- $mailto := printf "mailto:%s?subject=Hello%%20Axiomat" (site.Params.contactEmail | default "hello@axiomat.io") -}}
+{{- $bookHref := $mailto -}}
+{{- with $cal }}{{ $bookHref = . }}{{ end }}
 
-<!-- FLAGSHIP PRODUCT: WARD -->
-<section id="ward">
-  <div class="wrap">
-    <div class="eyebrow">What we're building</div>
-    <div class="product-panel">
-      <div class="product-head">
-        {{ partial "ward-mark.html" . }}
-        <div>
-          <div class="product-name">Ward</div>
-          <div class="product-tag">Describe it. Ward builds the agent.</div>
+{{- $blogSection := site.GetPage "/blog" -}}
+{{- $latestPost := "" -}}
+{{- with $blogSection }}{{ with .Pages.ByDate.Reverse }}{{ $latestPost = index . 0 }}{{ end }}{{ end -}}
+
+<div class="carousel-viewport" data-carousel>
+
+  <!-- Overview -->
+  <section class="panel" id="overview" data-panel="0">
+    {{ partial "bg-pattern.html" (dict "variant" 1) }}
+    <div class="panel-inner grid grid-2" style="gap:64px; margin-top:0;">
+      <div>
+        <h1>I help enterprise teams close deals faster, catch risk before a customer does, and ship the features that have been stuck in review.</h1>
+        <p class="lede" style="font-size:14.5px; max-width:52ch;">
+          Recent outcomes: cut a Fortune 500 insurer's M&amp;A integration timeline from years
+          to <span class="stat-chip">30 days</span>, and drove a Microsoft co-sale within a
+          quarter. AI is usually how — it's never the point.
+        </p>
+        <div class="cta-row" style="margin-top:18px; justify-content:flex-start;">
+          <a class="btn btn-primary" href="{{ $bookHref }}">Book a call<span class="link-arrow"></span></a>
+          <a class="btn btn-ghost" href="#work" data-panel-link="3">See the work</a>
         </div>
       </div>
-      <p class="product-body">
-        Tell Ward what you'd like handled — monitor a competitor, track and score market
-        predictions, synthesize research, stay on top of your inbox — and it builds an agent
-        that does it on its own, on a schedule, with memory and your approval. No builder, no
-        config, no code. It's the clearest expression of what Axiomat is after: software that
-        does more and asks less.
-      </p>
-      <div class="cta-row" style="margin-top:24px; justify-content:flex-start;">
-        <a class="btn btn-primary" href="/ward/">Explore Ward<span class="link-arrow"></span></a>
-        <a class="btn btn-ghost" href="/ward/#cta">Get early access</a>
+      <div class="panel-teaser">
+        <div class="eyebrow" style="margin-bottom:10px;">Latest from the Blog</div>
+        {{ with $latestPost }}
+          <p style="font-style:normal;">{{ .Title }}</p>
+          {{ with .Description }}<p class="muted" style="font-size:14px; margin-top:6px;">{{ . }}</p>{{ end }}
+          <a href="{{ .RelPermalink }}" class="accent" style="display:inline-block; margin-top:10px; font-size:13px;">Read it<span class="link-arrow"></span></a>
+        {{ else }}
+          <p>The first post is still being written — notes on evals, agent failure modes, and
+          whatever's actually shipping, once there's something worth saying.</p>
+          <a href="/blog/" class="accent" style="display:inline-block; margin-top:10px; font-size:13px;">Read the blog<span class="link-arrow"></span></a>
+        {{ end }}
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- WHO WE ARE -->
-<section id="about">
-  <div class="wrap">
-    <div class="eyebrow">Who's behind it</div>
-    <h2>Built on software that wasn't allowed to fail.</h2>
-    <div class="why-truth">
-      <p>Axiomat is Andrew Meyer's studio — operating under that name since 2019, a Florida
-      company since 2022. Before Ward, the work was enterprise IT and security software running
-      inside organizations that operate worldwide: multi-tenant SaaS architecture, integrations
-      with major security platforms, and the technical side of large post-merger IT
-      integrations. Ward came out of the complaint that ran through all of it — the software
-      worked, it just made people work for it.</p>
+  <!-- What I Do -->
+  <section class="panel" id="what-i-do" data-panel="1">
+    {{ partial "bg-pattern.html" (dict "variant" 2) }}
+    <div class="panel-inner">
+      <div class="eyebrow">What I Do</div>
+      <div class="grid grid-3" style="margin-top:0;" data-accordion>
+        <div class="card card-expand">
+          <button type="button" class="card-toggle" aria-expanded="false">
+            <h3>Enterprise software architecture{{ partial "icon.html" (dict "name" "chevron-down" "class" "card-chevron") }}</h3>
+          </button>
+          <p>Multi-tenant SaaS architecture and integrations with major security platforms,
+          built to the standard of software that isn't allowed to fail.</p>
+          <div class="card-detail"><div class="card-detail-inner">
+            <ul>
+              <li>Multi-tenant SaaS architecture built to run inside organizations that operate worldwide.</li>
+              <li>Self-initiated the Tanium+Microsoft Defender integration — content, sales plays, demo environments, and in-product dashboards — that drove a co-sale within a quarter and has since earned multiple Microsoft Partner of the Year awards.</li>
+              <li>Security-shaped habits: least privilege, approval before anything changes, audit trails — built in, not bolted on.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="card card-expand">
+          <button type="button" class="card-toggle" aria-expanded="false">
+            <h3>M&amp;A technical integration{{ partial "icon.html" (dict "name" "chevron-down" "class" "card-chevron") }}</h3>
+          </button>
+          <p>Post-merger integration playbooks that get two companies' systems talking in
+          weeks, not years — without the usual chaos.</p>
+          <div class="card-detail"><div class="card-detail-inner">
+            <ul>
+              <li>Architected a post-merger technical integration process for a Fortune 500 insurance provider, cutting M&amp;A integration timelines from years to under 30 days.</li>
+              <li>Adopted as reusable IP by Tanium's Big 4 consulting partners.</li>
+              <li>Led 20+ proof-of-concept initiatives from definition to purchase, contributing to a 2x year-over-year increase in technical wins.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="card card-expand">
+          <button type="button" class="card-toggle" aria-expanded="false">
+            <h3>Applied AI adoption{{ partial "icon.html" (dict "name" "chevron-down" "class" "card-chevron") }}</h3>
+          </button>
+          <p>Evals, agentic workflows, and LLM enablement — finding the use case worth
+          building, proving it works, and shipping it into production.</p>
+          <div class="card-detail"><div class="card-detail-inner">
+            <ul>
+              <li>Built an outcome-based eval framework spanning 75 use cases and 500+ prompts, driving performance from below-baseline to top-tier on an internal aptitude benchmark.</li>
+              <li>LLM guidance and tool-calling workflows covering 1,200+ in-product APIs — new modules onboard in under a week.</li>
+              <li>Shipped an LLM-powered alert-enrichment feature that surfaces contextual analysis to accelerate analyst triage.</li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
     </div>
-    <div class="grid grid-2" style="margin-top:28px">
-      <div class="card"><h3>{{ partial "icon.html" (dict "name" "shield") }}Security-shaped habits</h3><p>Years of building security software leaves a mark. Least privilege, approval before anything changes, encrypted credentials, and an audit trail aren't features bolted onto Ward — they're how it was built in the first place.</p></div>
-      <div class="card"><h3>{{ partial "icon.html" (dict "name" "wrench") }}Product, not slideware</h3><p>Ward is live software in early access with real users, not a deck. What's shipped is on the Ward page; what isn't yet is listed there too.</p></div>
-      <div class="card"><h3>{{ partial "icon.html" (dict "name" "bolt") }}High value, low friction</h3><p>The bar for everything here: it should do more for you and ask less of you. If it adds work, it isn't done.</p></div>
-      <div class="card"><h3>{{ partial "icon.html" (dict "name" "search") }}Check the work</h3><p>Open source and side projects live on <a class="accent" href="https://github.com/Axiomat-io">GitHub</a>. Ward's data handling is documented in detail on its <a class="accent" href="/ward/security/">security page</a>, including what isn't in place yet.</p></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section class="final" id="contact">
-  <div class="wrap">
-    <h2>Let's talk.</h2>
-    <p class="sub">Questions about Ward, an idea for it, or something you'd like built? It goes straight to Andrew.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="mailto:{{ site.Params.contactEmail | default `hello@axiomat.io` }}?subject=Hello%20Axiomat">{{ site.Params.contactEmail | default "hello@axiomat.io" }}</a>
-      <a class="btn btn-ghost" href="/ward/">Meet Ward<span class="link-arrow"></span></a>
+  <!-- Background -->
+  <section class="panel" id="background" data-panel="2">
+    {{ partial "bg-pattern.html" (dict "variant" 1) }}
+    <div class="panel-inner panel-bg-grid">
+      <div>
+        <img class="panel-photo" src="/images/andrew.jpg" alt="Andrew Meyer">
+        <div class="panel-photo-caption">Andrew, at his desk in Tampa Bay.</div>
+      </div>
+      <div>
+        <div class="eyebrow">Background</div>
+        <p class="lede" style="margin-top:0; font-size:15px; max-width:60ch;">
+          A one-person practice — no account team between you and the person who writes the
+          code. Before AI: multi-tenant SaaS architecture, security-platform integrations, and
+          post-merger IT work for companies that weren't allowed to have software fail.
+        </p>
+        <div class="panel-achievements">
+          <div><strong>Applied AI Architect, Tanium</strong> — eval framework + tool-calling above, at scale.</div>
+          <div><strong>Microsoft partnership</strong> — self-initiated Tanium+Defender integration, co-sale in a quarter.</div>
+          <div><strong>M&amp;A integration playbook</strong> — cut a Fortune 500 insurer's timeline from years to 30 days.</div>
+          <div><strong>Code42, ground up</strong> — support to solutions engineering, via an open-source tool people adopted.</div>
+        </div>
+        <div class="panel-quote">
+          <p>"You are the reason this project has been so successful. It's rare to find
+          someone who can focus on a tree without losing focus on the forest."</p>
+          <cite>— a security director leading post-merger integrations, Fortune 500 healthcare</cite>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Work -->
+  <section class="panel" id="work" data-panel="3">
+    {{ partial "bg-pattern.html" (dict "variant" 3) }}
+    <div class="panel-inner">
+      <div class="eyebrow">What's Been Built</div>
+      <div class="grid grid-2" style="margin-top:0;">
+        <div>
+          <h3 style="font-size:18px; margin-bottom:10px;">Ward</h3>
+          <p class="muted">Describe what you want handled, and Ward builds an agent that does
+          it — on its own, on a schedule, with memory and your approval. Live in early access
+          today. <a href="/ward/" class="accent">Explore Ward<span class="link-arrow"></span></a></p>
+        </div>
+        <div>
+          <h3 style="font-size:18px; margin-bottom:10px;">Nomad</h3>
+          <p class="muted">An AI-native housing concierge for travel nurses and locum
+          physicians — runs the full housing search every contract cycle. Currently in
+          development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="panel" id="contact" data-panel="4">
+    {{ partial "bg-pattern.html" (dict "variant" 2) }}
+    <div class="panel-inner" style="max-width:640px; text-align:center;">
+      <div class="eyebrow">Let's Talk</div>
+      <p class="lede" style="margin:14px auto 0; max-width:52ch;">
+        Thirty minutes to talk through where AI could actually move your product — an eval
+        framework, an agent workflow, or just where to start. No deck, just the problem.
+      </p>
+      <div class="cta-row" style="margin-top:24px; justify-content:center;">
+        <a class="btn btn-primary" href="{{ $bookHref }}">Book a call<span class="link-arrow"></span></a>
+        <a class="btn btn-ghost" href="{{ $mailto }}">{{ site.Params.contactEmail | default "hello@axiomat.io" }}</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="carousel-foot" data-carousel-foot>
+  <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous">←</button>
+  <div class="carousel-dots" data-carousel-dots></div>
+  <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next">→</button>
+</div>
 
 {{ end }}

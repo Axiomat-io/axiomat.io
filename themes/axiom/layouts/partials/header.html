@@ -22,15 +22,20 @@
   </ul>
 </div>
 {{- else }}
+{{- $cal := site.Params.calendarURL -}}
+{{- $bookHref := printf "mailto:%s?subject=Hello%%20Axiomat" (site.Params.contactEmail | default "hello@axiomat.io") -}}
+{{- with $cal }}{{ $bookHref = . }}{{ end }}
 <div class="wrap nav-inner">
   <a class="brand" href="/">
     <img class="brand-mark" src="/images/axiomat-mark.png" alt="" aria-hidden="true"> Axiomat
   </a>
-  <ul class="nav-links">
-    <li><a class="muted" href="/ward/">Ward</a></li>
-    <li><a class="muted" href="/#about">Who's behind it</a></li>
-    <li><a class="muted" href="/ward/security/" {{ if eq $p "/ward/security/" }}aria-current="page"{{ end }}>Security</a></li>
-    <li><a class="btn btn-primary" href="/#contact">Get in touch</a></li>
+  <ul class="nav-links" data-carousel-nav>
+    <li><a class="muted" href="/#overview" data-panel="0">Overview</a></li>
+    <li><a class="muted" href="/#what-i-do" data-panel="1">What I Do</a></li>
+    <li><a class="muted" href="/#background" data-panel="2">Background</a></li>
+    <li><a class="muted" href="/#work" data-panel="3">Work</a></li>
+    <li><a class="muted" href="/blog/" {{ if hasPrefix $p "/blog/" }}aria-current="page"{{ end }}>Blog</a></li>
+    <li><a class="btn btn-primary" href="{{ $bookHref }}">Book a call</a></li>
   </ul>
 </div>
 {{- end }}

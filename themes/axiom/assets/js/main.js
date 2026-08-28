@@ -146,10 +146,103 @@
     });
   }
 
+  // Homepage carousel: one full-viewport panel at a time, driven by a small
+  // index instead of scroll. Panel ids double as anchors so links from other
+  // pages ("/#background") land on the right slide.
+  function initCarousel() {
+    var viewport = document.querySelector('[data-carousel]');
+    if (!viewport) return;
+
+    var panels = Array.prototype.slice.call(viewport.querySelectorAll('.panel'));
+    if (!panels.length) return;
+
+    var dotsMount = document.querySelector('[data-carousel-dots]');
+    var prevBtn = document.querySelector('[data-carousel-prev]');
+    var nextBtn = document.querySelector('[data-carousel-next]');
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-carousel-nav] a[data-panel]'));
+
+    var dots = panels.map(function (panel, n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'carousel-dot';
+      b.setAttribute('aria-label', 'Go to slide ' + (n + 1));
+      b.addEventListener('click', function () { goTo(n); });
+      dotsMount.appendChild(b);
+      return b;
+    });
+
+    function indexFromHash() {
+      var id = (location.hash || '').slice(1);
+      if (!id) return 0;
+      var n = panels.findIndex(function (p) { return p.id === id; });
+      return n === -1 ? 0 : n;
+    }
+
+    var i = indexFromHash();
+
+    function render() {
+      panels.forEach(function (panel, n) {
+        var offset = (n - i) * 100 + '%';
+        panel.style.transform = 'translateX(' + offset + ')';
+        panel.style.opacity = n === i ? '1' : '0';
+        panel.setAttribute('aria-hidden', n === i ? 'false' : 'true');
+      });
+      dots.forEach(function (dot, n) { dot.setAttribute('aria-current', n === i ? 'true' : 'false'); });
+      navLinks.forEach(function (a) {
+        a.classList.toggle('active', Number(a.getAttribute('data-panel')) === i);
+      });
+      if (prevBtn) prevBtn.disabled = i === 0;
+      if (nextBtn) nextBtn.disabled = i === panels.length - 1;
+    }
+
+    function goTo(n) {
+      i = Math.max(0, Math.min(panels.length - 1, n));
+      history.replaceState(null, '', '#' + panels[i].id);
+      render();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(i - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(i + 1); });
+    navLinks.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        goTo(Number(a.getAttribute('data-panel')));
+      });
+    });
+    document.querySelectorAll('[data-panel-link]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        goTo(Number(a.getAttribute('data-panel-link')));
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') goTo(i + 1);
+      if (e.key === 'ArrowLeft') goTo(i - 1);
+    });
+    window.addEventListener('hashchange', function () { goTo(indexFromHash()); });
+
+    render();
+  }
+
+  // Expandable "What I Do" tiles — click a card's heading to reveal the
+  // detail underneath. Independent toggles, not an exclusive accordion.
+  function initCardExpand() {
+    document.querySelectorAll('[data-accordion] .card-expand').forEach(function (card) {
+      var toggle = card.querySelector('.card-toggle');
+      if (!toggle) return;
+      toggle.addEventListener('click', function () {
+        var open = card.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  }
+
   function boot() {
     initThemePicker();
     initChatDemo();
     initPlanIntent();
+    initCarousel();
+    initCardExpand();
   }
 
   if (document.readyState === 'loading') {

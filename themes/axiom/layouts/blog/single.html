@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+<section class="legal-head">
+  <div class="wrap">
+    <div class="eyebrow"><a class="accent" href="/blog/">Blog</a></div>
+    <h1 class="legal-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+    <p class="legal-dates mono">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="/blog/"><span class="link-arrow-back"></span>All posts</a>
+      <a class="btn btn-primary" href="/#contact">Book a call<span class="link-arrow"></span></a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,49 @@
+{{ define "main" }}
+
+<section class="legal-head">
+  <div class="wrap">
+    <div class="eyebrow">Blog</div>
+    <h1 class="legal-title">{{ .Title }}</h1>
+    <p class="lede">{{ .Description }}</p>
+    {{ with .OutputFormats.Get "rss" }}
+      <p class="legal-dates mono"><a class="accent" href="{{ .RelPermalink }}">Subscribe via RSS<span class="link-arrow"></span></a></p>
+    {{ end }}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    {{ $posts := .Pages.ByDate.Reverse }}
+    {{ if $posts }}
+      <div class="updates">
+        {{ range $posts }}
+          <article class="update-item">
+            <div class="update-meta mono">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </div>
+            <h2 class="update-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            {{ with .Description }}<p class="update-sum">{{ . }}</p>{{ end }}
+            <a class="update-more accent" href="{{ .RelPermalink }}">Read it<span class="link-arrow"></span></a>
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="lede">The first entry is still being written — notes on evals, agent failure
+      modes, and whatever's actually shipping, once there's something worth saying. No
+      placeholder posts in the meantime.</p>
+    {{ end }}
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Let's talk.</h2>
+    <p class="sub">Questions about the work, or something you'd like built? It goes straight to Andrew.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/#contact">Book a call<span class="link-arrow"></span></a>
+      <a class="btn btn-ghost" href="/">Back to Axiomat</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}
