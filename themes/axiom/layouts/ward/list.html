@@ -324,65 +324,61 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
+<!-- PLANS -->
+<section id="plans">
   <div class="wrap">
-    <div class="eyebrow">Pricing</div>
-    <h2>Try it free. Then pay for what you run.</h2>
+    <div class="eyebrow">Plans</div>
+    <h2>Try it free. Then pick how much you want running.</h2>
     <p class="lede">
-      Every plan starts with a 14-day free trial. You pick one for two reasons: how much you
-      want handled each day, and whether you want Max mode on tap. It's a daily budget of
-      assistant runs that all your assistants share — add more assistants and they split the
-      same budget. Chatting with Ward never spends runs; it has its own daily allowance, which
-      grows with the plan. Ward is in early access, so these are the plans at launch — request
-      access and we'll get you in.
+      Every plan gets the exact same product — every feature, every connection, every control.
+      Plans differ only in the size of your daily credit pool and whether Max mode is included.
+      It's one pool shared by chatting with Ward and every assistant you run — add more
+      assistants and they split the same pool. Every plan starts with a free trial; exact
+      pricing and credits are in the app when you start one.
     </p>
     <div class="pricing">
       <div class="tier">
         <div class="tier-name">Basic</div>
-        <div class="tier-price">$9<span>.99/mo</span></div>
         <div class="tier-note">To get started</div>
         <ul>
-          <li><strong>14-day free trial</strong></li>
-          <li>3 assistant runs a day</li>
+          <li>Free trial included</li>
+          <li>A daily credit pool for chat and assistants</li>
           <li>As many assistants as you like</li>
           <li>Normal &amp; High modes</li>
           <li>Every other feature included</li>
         </ul>
-        {{ partial "trial-cta.html" (dict "plan" "Basic" "price" "$9.99/mo" "class" "btn-ghost tier-cta") }}
+        {{ partial "trial-cta.html" (dict "plan" "Basic" "class" "btn-ghost tier-cta") }}
       </div>
 
       <div class="tier tier-featured">
         <div class="tier-flag">Most popular</div>
         <div class="tier-name">Plus</div>
-        <div class="tier-price">$19<span>.99/mo</span></div>
         <div class="tier-note">For everyday use</div>
         <ul>
-          <li><strong>14-day free trial</strong></li>
-          <li>9 assistant runs a day</li>
+          <li>Free trial included</li>
+          <li>A bigger daily credit pool</li>
           <li>As many assistants as you like</li>
           <li><strong>Max mode</strong> for the hardest jobs</li>
           <li>Every feature included</li>
         </ul>
-        {{ partial "trial-cta.html" (dict "plan" "Plus" "price" "$19.99/mo" "class" "btn-primary tier-cta") }}
+        {{ partial "trial-cta.html" (dict "plan" "Plus" "class" "btn-primary tier-cta") }}
       </div>
 
       <div class="tier">
         <div class="tier-name">Pro</div>
-        <div class="tier-price">$29<span>.99/mo</span></div>
         <div class="tier-note">When you want more running</div>
         <ul>
-          <li><strong>14-day free trial</strong></li>
-          <li>15 assistant runs a day</li>
+          <li>Free trial included</li>
+          <li>The largest daily credit pool</li>
           <li>As many assistants as you like</li>
           <li><strong>Max mode</strong> for the hardest jobs</li>
           <li>Every feature included</li>
         </ul>
-        {{ partial "trial-cta.html" (dict "plan" "Pro" "price" "$29.99/mo" "class" "btn-ghost tier-cta") }}
+        {{ partial "trial-cta.html" (dict "plan" "Pro" "class" "btn-ghost tier-cta") }}
       </div>
     </div>
     <p class="fine fine-center">
-      <strong>The price on the plan is the price.</strong> Spend the day's budget and Ward
+      <strong>The price on the plan is the price.</strong> Spend the day's pool and Ward
       pauses until tomorrow — it never quietly runs up a bill you didn't agree to.
     </p>
     <p class="fine fine-center">
@@ -394,8 +390,8 @@
     <p class="lede lede-sub">
       For work where the thinking matters more than the count — deep research, thorny analysis,
       a first pass at something new — you can put a run on a more capable model. It draws more
-      from the same daily budget, so you're always trading breadth for depth on your terms.
-      Set it per assistant, or per run.
+      from the same daily pool, so you're always trading breadth for depth on your terms. Set
+      it per assistant, or per run.
     </p>
     <div class="modes">
       <div class="mode">
@@ -412,8 +408,7 @@
       </div>
     </div>
     <p class="note">
-      Normal and High are on every plan. Max is on Plus and Pro — at 5 runs it wouldn't fit
-      inside Basic's day anyway, where a single High run already spends the whole budget.
+      Normal and High are on every plan. Max is on Plus and Pro only.
     </p>
   </div>
 </section>
@@ -499,7 +494,7 @@
     <p class="sub">Every plan starts with 14 days free. Pick one, point Ward at something you keep meaning to get to, and see what it builds.</p>
     <div class="cta-row">
       {{ partial "trial-cta.html" (dict "class" "btn-primary") }}
-      <a class="btn btn-ghost" href="#pricing">Compare plans</a>
+      <a class="btn btn-ghost" href="#plans">Compare plans</a>
     </div>
     {{- else }}
     <p class="sub">We're opening early access to people who'd rather have AI quietly handle the little things than sit around waiting to be asked.</p>
